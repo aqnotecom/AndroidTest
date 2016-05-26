@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">AndroidTest</string>
+
+    <string name="main_activity">AQNote\'s Android Test Demo</string>
+    <string name="about_activity">about activity</string>
+    <string name="syswebview_activity">syswebview activity</string>
+    <string name="ucwebview_activity">ucwebview activity</string>
+    <string name="confirm">confirm</string>
+    <string name="cancel">cancel</string>
+    <string name="go">go</string>
+</resources>

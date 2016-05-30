@@ -23,6 +23,7 @@ import java.util.List;
 public class MainActivity extends Activity {
 
     private static final String TAG = MainActivity.class.getSimpleName();
+    private static final String _ACTIVITY = "_activity";
 
     private List<String> adapterNameList = new ArrayList<>();
     private ListView listView;
@@ -38,12 +39,40 @@ public class MainActivity extends Activity {
         this.addListView();
     }
 
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        String activityClassString = data.getStringExtra(_ACTIVITY);
+        if(activityClassString == null || "".equalsIgnoreCase(activityClassString)) {
+            return;
+        }
+        Intent intent = new Intent();
+        intent.setAction(activityClassString);
+        intent.putExtra(_ACTIVITY, activityClassString);
+        this.startActivityForResult(intent, requestCode);
+    }
+
     private void addListView() {
         listView = (ListView) findViewById(R.id.main_listview);
 
         adapterNameList.add("AboutActivity");
         adapterNameList.add("SysWebViewActivity");
         adapterNameList.add("UCWebViewActivity");
+        adapterNameList.add("TODO");
+        adapterNameList.add("TODO");
+        adapterNameList.add("TODO");
+        adapterNameList.add("TODO");
+        adapterNameList.add("TODO");
+        adapterNameList.add("TODO");
+        adapterNameList.add("TODO");
+        adapterNameList.add("TODO");
+        adapterNameList.add("TODO");
+        adapterNameList.add("TODO");
+        adapterNameList.add("TODO");
+        adapterNameList.add("TODO");
+        adapterNameList.add("TODO");
+        adapterNameList.add("TODO");
+
         adapter = new AQAdapter<String>(this, adapterNameList);
 
         listView.setAdapter(adapter);
@@ -62,11 +91,16 @@ public class MainActivity extends Activity {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             String activityName = "com.aqnote.androidtest.activity." + adapterNameList.get(position);
-            try {
-                MainActivity.this.startActivity(new Intent(MainActivity.this, Class.forName(activityName)));
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
-            }
+            MainActivity.this.startActivity(new Intent(MainActivity.this, MainActivity.getClass(activityName)));
         }
+    }
+
+    private static Class<?> getClass(String className) {
+        try {
+            return Class.forName(className);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

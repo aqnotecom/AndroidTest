@@ -25,6 +25,7 @@ public class SysWebViewActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTitle("SysWebView Activity");
         setContentView(R.layout.activity_syswebview);
 
         webViewLayout = (ViewGroup)findViewById(R.id.webview_container);

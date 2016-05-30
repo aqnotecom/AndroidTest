@@ -14,6 +14,7 @@ public class AboutActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.i(TAG, "onCreate");
+        setTitle("Abdout Activity");
         setContentView(R.layout.activity_about);
     }
 }

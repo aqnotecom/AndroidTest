@@ -2,6 +2,8 @@
 <manifest package="com.aqnote.androidtest"
           xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <uses-sdk android:minSdkVersion="23" />
+
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -16,9 +18,24 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".activity.AboutActivity" />
-        <activity android:name=".activity.SysWebViewActivity" />
-        <activity android:name=".activity.UCWebViewActivity" />
+        <activity android:name="com.aqnote.androidtest.activity.AboutActivity">
+            <intent-filter>
+                <action android:name="com.aqnote.androidtest.activity.AboutActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.aqnote.androidtest.activity.SysWebViewActivity">
+            <intent-filter>
+                <action android:name="com.aqnote.androidtest.activity.SysWebViewActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.aqnote.androidtest.activity.UCWebViewActivity">
+            <intent-filter>
+                <action android:name="com.aqnote.androidtest.activity.UCWebViewActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

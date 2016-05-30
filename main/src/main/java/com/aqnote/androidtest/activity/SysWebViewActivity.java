@@ -55,8 +55,8 @@ public class SysWebViewActivity extends Activity {
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
         webSettings.setAllowFileAccess(false);
-//        webSettings.setCacheMode(WebSettings.LOAD_NO_CACHE);
-//        webSettings.setJavaScriptCanOpenWindowsAutomatically(true);
+        webSettings.setCacheMode(WebSettings.LOAD_NO_CACHE);
+        webSettings.setJavaScriptCanOpenWindowsAutomatically(true);
 
         webView.setWebViewClient(new AliWebViewClient());
     }

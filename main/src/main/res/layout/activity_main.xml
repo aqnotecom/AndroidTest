@@ -1,89 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="fill_parent"
-              android:layout_height="fill_parent"
-              android:orientation="vertical" >
 
-    <TextView
-        android:layout_width="fill_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main_layout"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_weight="4" >
+
+    <ListView
+        android:id="@+id/main_listview"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:paddingLeft="20dp"
-        android:paddingTop="20dp"
-        android:text="@string/main_activity" />
+        android:layout_width="match_parent">
+    </ListView>
 
-    <RelativeLayout
-        android:id="@+id/android_rl"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="4" >
+</RelativeLayout>
 
-        <Button
-            android:id="@+id/main_about_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:onClick="displayAboutActivity"
-            android:text="@string/about_activity"
-            android:width="200dp" />
-
-        <Button
-            android:id="@+id/main_syswebview_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/main_about_button"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
-            android:onClick="displaySysWebViewActivity"
-            android:text="@string/syswebview_activity"
-            android:width="200dp" />
-
-        <Button
-            android:id="@+id/android_ucwebview_activity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/main_syswebview_button"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
-            android:onClick="displayUCWebViewActivity"
-            android:text="@string/ucwebview_activity"
-            android:width="200dp" />
-
-        <Button
-            android:id="@+id/main_log_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/android_ucwebview_activity"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
-            android:onClick="displayLog"
-            android:text="log"
-            android:width="200dp" />
-
-        <Button
-            android:id="@+id/main_exit_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/main_log_button"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
-            android:onClick="exit"
-            android:text="exit"
-            android:width="200dp" />
-
-        <EditText
-            android:id="@+id/main_log_textview"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/main_exit_button"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="32dp"
-            android:ems="10"
-            android:height="100dp"
-            android:inputType="textMultiLine" >
-
-            <requestFocus />
-        </EditText>
-    </RelativeLayout>
-
-</LinearLayout>

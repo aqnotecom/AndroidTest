@@ -24,15 +24,9 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name="com.aqnote.androidtest.activity.SysWebViewActivity">
+        <activity android:name=".activity.WebViewActivity">
             <intent-filter>
                 <action android:name="com.aqnote.androidtest.activity.SysWebViewActivity" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-        <activity android:name="com.aqnote.androidtest.activity.UCWebViewActivity">
-            <intent-filter>
-                <action android:name="com.aqnote.androidtest.activity.UCWebViewActivity" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>

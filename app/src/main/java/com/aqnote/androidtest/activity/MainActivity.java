@@ -16,6 +16,7 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 
 import com.aqnote.androidtest.R;
+import com.aqnote.androidtest.util.AssertUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,6 +38,8 @@ public class MainActivity extends Activity {
         this.setTitle("AQNote's Android Demo Index");
         this.setContentView(R.layout.activity_main);
         this.addListView();
+
+        AssertUtil.getAssetFileINode("id.png", this);
     }
 
 
@@ -56,21 +59,7 @@ public class MainActivity extends Activity {
         listView = (ListView) findViewById(R.id.main_listview);
 
         adapterNameList.add("AboutActivity");
-        adapterNameList.add("SysWebViewActivity");
-        adapterNameList.add("UCWebViewActivity");
-        adapterNameList.add("TODO");
-        adapterNameList.add("TODO");
-        adapterNameList.add("TODO");
-        adapterNameList.add("TODO");
-        adapterNameList.add("TODO");
-        adapterNameList.add("TODO");
-        adapterNameList.add("TODO");
-        adapterNameList.add("TODO");
-        adapterNameList.add("TODO");
-        adapterNameList.add("TODO");
-        adapterNameList.add("TODO");
-        adapterNameList.add("TODO");
-        adapterNameList.add("TODO");
+        adapterNameList.add("WebViewActivity");
         adapterNameList.add("TODO");
 
         adapter = new AQAdapter<String>(this, adapterNameList);

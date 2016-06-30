@@ -10,17 +10,18 @@ import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.aqnote.androidtest.webview.AliWebViewClient;
 import com.aqnote.androidtest.R;
+import com.aqnote.androidtest.webview.AQWebChromeClient;
+import com.aqnote.androidtest.webview.AQWebViewClient;
 
-public class SysWebViewActivity extends Activity {
+public class WebViewActivity extends Activity {
 
-    private static final String TAG = SysWebViewActivity.class.getSimpleName();
+    private static final String TAG = WebViewActivity.class.getSimpleName();
 
-    private ViewGroup   webViewLayout;
-    private EditText    inputURL;
-    private Button      go;
-    private WebView     webView;
+    private ViewGroup webViewLayout;
+    private EditText  inputURL;
+    private Button    go;
+    private WebView   webView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +29,7 @@ public class SysWebViewActivity extends Activity {
         setTitle("SysWebView Activity");
         setContentView(R.layout.activity_syswebview);
 
-        webViewLayout = (ViewGroup)findViewById(R.id.webview_container);
+        webViewLayout = (ViewGroup) findViewById(R.id.webview_container);
 
         initInputURL();
         initGoButton();
@@ -42,12 +43,12 @@ public class SysWebViewActivity extends Activity {
     }
 
     private void initInputURL() {
-        inputURL = (EditText)findViewById(R.id.webview_url);
-        inputURL.setText("https://login.daily.taobao.net/member/login.jhtml");
+        inputURL = (EditText) findViewById(R.id.webview_url);
+        inputURL.setText("https://www.aqnote.com");
     }
 
     private void initGoButton() {
-        go = (Button)findViewById(R.id.webview_go);
+        go = (Button) findViewById(R.id.webview_go);
     }
 
     private void initWebView() {
@@ -59,7 +60,13 @@ public class SysWebViewActivity extends Activity {
         webSettings.setCacheMode(WebSettings.LOAD_NO_CACHE);
         webSettings.setJavaScriptCanOpenWindowsAutomatically(true);
 
-        webView.setWebViewClient(new AliWebViewClient());
+        webView.removeJavascriptInterface("searchBoxJavaBridge_");
+        webView.removeJavascriptInterface("accessibility");
+        webView.removeJavascriptInterface("accessibilityTraversal");
+
+        webView.setWebViewClient(new AQWebViewClient());
+
+        webView.setWebChromeClient(new AQWebChromeClient());
     }
 
 

@@ -1,2 +1,2 @@
-include ':app', ':store'
+include ':app-test', ':module-store', ':app-barcode'
 

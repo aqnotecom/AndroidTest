@@ -1,7 +1,7 @@
 
 android {
-    compileSdkVersion 23        // 编译的SDK版本
-    buildToolsVersion "23.0.2"  // 编译的Tools版本
+    compileSdkVersion 25         // 编译的SDK版本
+    buildToolsVersion "25.0.0"  // 编译的Tools版本
 
     sourceSets {
         main {
@@ -14,11 +14,13 @@ android {
             assets.srcDirs = ['src/main/assets']                // 指定assets目录
             jniLibs.srcDirs = ['libs']                          // 指定lib库目录
         }
+
         unitTest {
             java.srcDir file('src/test/java')
             resources.srcDir file('src/test/res')
         }
-        androidTest {
+
+        instrumentTest {
             manifest.srcFile file('src/androidTest/AndroidManifest.xml')
             java.srcDirs = ['src/androidTest/java']
             resources.srcDirs = ['src/androidTest/java']
@@ -31,17 +33,21 @@ android {
     }
 
     signingConfigs {                            // 签名配置
+        // keytool -genkey -keystore yudao.keystore -keyalg RSA -validity 10950 -alias aqnote
+        // keytool -keystore yudao.keystore -list
         release {                               // 发布版签名配置
-//            storeFile file("yudao.keystore")    // 密钥文件路径
-//            storePassword "yudao"               // 密钥文件密码
-//            keyAlias "aqnote"                   // key别名
-//            keyPassword "yudao"                 // key密码
+            storeFile file("keystore/yudao.keystore")    // 密钥文件路径
+            storePassword "yudao1"               // 密钥文件密码
+            keyAlias "aqnote"                   // key别名
+            keyPassword "aqnote1"                 // key密码
         }
+        // keytool -genkey -v -keystore debug.keystore -alias androiddebugkey -storepass android -keypass android -keyalg RSA -validity 14000
+        // CN=Android Debug, OU=Unknown, O=Android, L=Unknown, ST=Unknown, C=US
         debug {                                 // debug版签名配置
-//            storeFile file("debug.keystore")
-//            storePassword "android"
-//            keyAlias "androiddebugkey"
-//            keyPassword "android"
+            storeFile file("keystore/debug.keystore")
+            storePassword "android"
+            keyAlias "androiddebugkey"
+            keyPassword "android"
         }
     }
 

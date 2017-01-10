@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">AQNTest</string>
+
+    <string name="main_activity">MainActivity</string>
+    <string name="about_activity">AboutActivity</string>
+    <string name="syswebview_activity">WebviewActivity</string>
+    <string name="task_activity">TaskActivity</string>
+    <string name="new_task_activity">NewTaskActivity</string>
+    <string name="confirm">confirm</string>
+    <string name="cancel">cancel</string>
+    <string name="go">go</string>
+</resources>

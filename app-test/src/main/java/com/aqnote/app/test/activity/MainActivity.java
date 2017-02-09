@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 
@@ -30,14 +31,23 @@ public class MainActivity extends Activity {
     private ListView listView;
     private ArrayAdapter<String> adapter;
 
+    private LinearLayout layout;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.i(TAG, "onCreate");
 
         this.setTitle(TAG);
-        this.setContentView(R.layout.activity_main);
-        this.addListView();
+
+        layout = new LinearLayout(MainActivity.this);
+        layout.setHorizontalGravity(Gravity.FILL_HORIZONTAL);
+        layout.setVerticalGravity(Gravity.FILL_VERTICAL);
+        layout.setOrientation(LinearLayout.VERTICAL);
+
+        setContentView(layout);
+
+        addListView();
 
         AssertUtil.getAssetFileINode("id.png", this);
     }
@@ -56,7 +66,7 @@ public class MainActivity extends Activity {
     }
 
     private void addListView() {
-        listView = (ListView) findViewById(R.id.main_listview);
+        listView = new ListView(MainActivity.this);
 
         adapterNameList.add(AboutActivity.class.getSimpleName());
         adapterNameList.add(WebViewActivity.class.getSimpleName());
@@ -67,6 +77,9 @@ public class MainActivity extends Activity {
 
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AQAdapterView());
+
+        LinearLayout.LayoutParams textViewParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        layout.addView(listView, textViewParams);
     }
 
 

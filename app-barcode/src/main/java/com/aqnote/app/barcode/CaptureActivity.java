@@ -87,7 +87,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
   private static final long DEFAULT_INTENT_RESULT_DURATION_MS = 1500L;
   private static final long BULK_MODE_SCAN_DELAY_MS = 1000L;
 
-  private static final String[] ZXING_URLS = { "http://zxing.appspot.com/scan", "zxing://scan/" };
+  private static final String[] AQNOTE_BARCODE_sURLS = { "http://aqnote.com/barcode", "aqnote://barcode/" };
 
   private static final int HISTORY_REQUEST_CODE = 0x0000bacc;
 
@@ -141,6 +141,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
     beepManager = new BeepManager(this);
     ambientLightManager = new SensorInterface(this);
 
+    // 批量初始画preferences配置
     PreferenceManager.setDefaultValues(this, R.xml.preferences, false);
   }
 
@@ -289,7 +290,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
     if (dataString == null) {
       return false;
     }
-    for (String url : ZXING_URLS) {
+    for (String url : AQNOTE_BARCODE_sURLS) {
       if (dataString.startsWith(url)) {
         return true;
       }
@@ -352,30 +353,30 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
   }
 
   @Override
-  public boolean onCreateOptionsMenu(Menu menu) {
+  public boolean onCreateOptionsMenu(Menu menu) {  // 菜单展示
     MenuInflater menuInflater = getMenuInflater();
     menuInflater.inflate(R.menu.capture, menu);
     return super.onCreateOptionsMenu(menu);
   }
 
   @Override
-  public boolean onOptionsItemSelected(MenuItem item) {
+  public boolean onOptionsItemSelected(MenuItem item) { // 菜单动作
     Intent intent = new Intent(Intent.ACTION_VIEW);
     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_DOCUMENT);
     switch (item.getItemId()) {
-      case R.id.menu_share:
+      case R.id.menu_share: // 生成二维码图片分享
         intent.setClassName(this, ShareActivity.class.getName());
         startActivity(intent);
         break;
-      case R.id.menu_history:
+      case R.id.menu_history: // 历史记录菜单
         intent.setClassName(this, HistoryActivity.class.getName());
         startActivityForResult(intent, HISTORY_REQUEST_CODE);
         break;
-      case R.id.menu_settings:
+      case R.id.menu_settings: // 设置菜单
         intent.setClassName(this, PreferencesActivity.class.getName());
         startActivity(intent);
         break;
-      case R.id.menu_help:
+      case R.id.menu_help:  // 帮助菜单
         intent.setClassName(this, HelpActivity.class.getName());
         startActivity(intent);
         break;
@@ -386,8 +387,8 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
   }
 
   @Override
-  public void onActivityResult(int requestCode, int resultCode, Intent intent) {
-    if (resultCode == RESULT_OK && requestCode == HISTORY_REQUEST_CODE && historyManager != null) {
+  public void onActivityResult(int requestCode, int resultCode, Intent intent) { // 子页面回来的消息处理
+    if (resultCode == RESULT_OK && requestCode == HISTORY_REQUEST_CODE && historyManager != null) { // 历史记录处理
       int itemNumber = intent.getIntExtra(Intents.History.ITEM_NUMBER, -1);
       if (itemNumber >= 0) {
         HistoryItem historyItem = historyManager.buildHistoryItem(itemNumber);

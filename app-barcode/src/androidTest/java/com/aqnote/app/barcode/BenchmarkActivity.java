@@ -23,6 +23,8 @@ import android.os.Environment;
 import android.view.View;
 import android.widget.TextView;
 
+import com.aqnote.app.barcode.R;
+
 /**
  * Activity that runs barcode scanning benchmarks.
  */

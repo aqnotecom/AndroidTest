@@ -1,2 +1,5 @@
-include ':app-test', ':module-store', ':app-barcode'
+include ':app-test',
+        ':module-store',
+        ':app-barcode',
+        ':module-account'
 

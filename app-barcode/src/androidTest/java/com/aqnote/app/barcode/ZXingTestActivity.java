@@ -31,6 +31,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.aqnote.app.barcode.R;
 import com.aqnote.app.barcode.systemservice.camera.CameraConfigurationUtils;
 import com.aqnote.app.barcode.integration.android.IntentIntegrator;
 import com.aqnote.app.barcode.integration.android.IntentResult;

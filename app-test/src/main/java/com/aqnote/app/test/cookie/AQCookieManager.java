@@ -1,9 +1,7 @@
 package com.aqnote.app.test.cookie;
 
-
 import android.content.Context;
 import android.webkit.CookieManager;
-import android.webkit.CookieSyncManager;
 import android.webkit.ValueCallback;
 
 /**
@@ -55,9 +53,9 @@ public class AQCookieManager {
         cookieManager.flush();
     }
 
-    public void clearAllCookies(){
+    public void clearAllCookies() {
 
-        ValueCallback callback = new ValueCallback<Boolean>() {
+        ValueCallback<Boolean> callback = new ValueCallback<Boolean>() {
             public void onReceiveValue(Boolean value) {
                 System.out.println("[madding] remove cookie result=" + value);
             }
@@ -65,8 +63,8 @@ public class AQCookieManager {
 
         CookieManager cookieManager = CookieManager.getInstance();
         cookieManager.setAcceptCookie(true);
-        cookieManager.removeAllCookies(callback);
         cookieManager.removeSessionCookies(callback);
+        cookieManager.removeAllCookies(callback);
         cookieManager.flush();
     }
 

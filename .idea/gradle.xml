@@ -10,6 +10,7 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app-barcode" />
             <option value="$PROJECT_DIR$/app-test" />
+            <option value="$PROJECT_DIR$/module-account" />
             <option value="$PROJECT_DIR$/module-store" />
           </set>
         </option>

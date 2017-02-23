@@ -44,7 +44,6 @@ public class MainActivity extends Activity {
         layout.setHorizontalGravity(Gravity.FILL_HORIZONTAL);
         layout.setVerticalGravity(Gravity.FILL_VERTICAL);
         layout.setOrientation(LinearLayout.VERTICAL);
-
         setContentView(layout);
 
         addListView();
@@ -72,13 +71,17 @@ public class MainActivity extends Activity {
         adapterNameList.add(WebViewActivity.class.getSimpleName());
         adapterNameList.add(TaskActivity.class.getSimpleName());
         adapterNameList.add(SpeechActivity.class.getSimpleName());
+        adapterNameList.add(AccountActivity.class.getSimpleName());
+        adapterNameList.add(LifecycleActivity.class.getSimpleName());
 
         adapter = new AQAdapter<String>(this, adapterNameList);
 
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AQAdapterView());
 
-        LinearLayout.LayoutParams textViewParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        LinearLayout.LayoutParams textViewParams = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT);
         layout.addView(listView, textViewParams);
     }
 

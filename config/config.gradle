@@ -3,6 +3,13 @@ android {
     compileSdkVersion 25         // 编译的SDK版本
     buildToolsVersion "25.0.0"  // 编译的Tools版本
 
+    defaultConfig {
+        minSdkVersion 25                        // 支持的最低版本
+        targetSdkVersion 25                     // 支持的目标版本
+        versionCode 1                           // 版本号
+        versionName "1.0.0"                     // 版本名
+    }
+
     sourceSets {
         main {
             manifest.srcFile 'src/main/AndroidManifest.xml'     // 指定AndroidManifest文件
@@ -37,9 +44,9 @@ android {
         // keytool -keystore yudao.keystore -list
         release {                               // 发布版签名配置
             storeFile file("keystore/yudao.keystore")    // 密钥文件路径
-            storePassword "yudao1"               // 密钥文件密码
-            keyAlias "aqnote"                   // key别名
-            keyPassword "aqnote1"                 // key密码
+            storePassword "hell01234"               // 密钥文件密码
+            keyAlias "yudao"                   // key别名
+            keyPassword "hell01234"                 // key密码
         }
         // keytool -genkey -v -keystore debug.keystore -alias androiddebugkey -storepass android -keypass android -keyalg RSA -validity 14000
         // CN=Android Debug, OU=Unknown, O=Android, L=Unknown, ST=Unknown, C=US
@@ -51,5 +58,17 @@ android {
         }
     }
 
+    lintOptions {
+        abortOnError false                          // lint时候终止错误上报,防止编译的时候莫名的失败
+    }
+}
+
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+
+//    compile 'com.android.support:appcompat-v7:25.1.1'
+
+    testCompile 'junit:junit:4.12'
 }
 

@@ -1,12 +1,15 @@
 <resources>
     <string name="app_name">AQNTest</string>
 
-    <string name="main_activity">MainActivity</string>
-    <string name="about_activity">AboutActivity</string>
-    <string name="syswebview_activity">WebviewActivity</string>
-    <string name="task_activity">TaskActivity</string>
-    <string name="new_task_activity">NewTaskActivity</string>
     <string name="confirm">confirm</string>
     <string name="cancel">cancel</string>
     <string name="go">go</string>
+
+    <string name="activity_main">MainActivity</string>
+    <string name="activity_about">AboutActivity</string>
+    <string name="activity_syswebview">WebviewActivity</string>
+    <string name="activity_task">TaskActivity</string>
+    <string name="activity_new_task">NewTaskActivity</string>
+
+    <string name="activity_lifecycle_message">Please see logcat</string>
 </resources>

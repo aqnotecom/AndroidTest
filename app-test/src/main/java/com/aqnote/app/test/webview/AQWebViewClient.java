@@ -3,6 +3,7 @@ package com.aqnote.app.test.webview;
 import android.net.http.SslError;
 import android.util.Log;
 import android.webkit.SslErrorHandler;
+import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
@@ -14,7 +15,7 @@ public class AQWebViewClient extends WebViewClient {
     private static final String TAG = AQWebViewClient.class.getSimpleName();
 
     @Override
-    public boolean shouldOverrideUrlLoading(WebView view, String url) {
+    public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request)  {
         return false;
     }
 

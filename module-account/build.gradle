@@ -1,0 +1,7 @@
+apply plugin: 'com.android.library'
+apply from: '../config/config.gradle'
+
+
+dependencies {
+    compile 'com.google.code.gson:gson:2.2.2'
+}

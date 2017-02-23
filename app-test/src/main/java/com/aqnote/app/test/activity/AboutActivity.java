@@ -24,6 +24,7 @@ public class AboutActivity extends Activity {
         layout.setHorizontalGravity(Gravity.FILL_HORIZONTAL);
         layout.setVerticalGravity(Gravity.FILL_VERTICAL);
         layout.setOrientation(LinearLayout.VERTICAL);
+        setContentView(layout);
 
         TextView textView = new TextView(AboutActivity.this);
         StringBuilder sb = new StringBuilder();
@@ -31,10 +32,11 @@ public class AboutActivity extends Activity {
         sb.append("mac address: ").append(IpAddressUtil.getMACAddress("eth0")).append("\n");
         textView.setText(sb.toString());
 
-        LinearLayout.LayoutParams textViewParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        LinearLayout.LayoutParams textViewParams = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT);
         layout.addView(textView, textViewParams);
 
-        setContentView(layout);
 
     }
 }

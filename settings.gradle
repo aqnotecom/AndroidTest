@@ -1,4 +1,5 @@
-include ':app-test',
+include ':app-test', ':module-system', ':module-rpc',
+        ':app-wifianalyzer',
         ':module-store',
         ':app-barcode',
         ':module-account'

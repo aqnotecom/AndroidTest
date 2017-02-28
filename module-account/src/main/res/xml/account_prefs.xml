@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-    <PreferenceCategory android:title="Udinic Preferences" />
+    <PreferenceCategory android:title="AQNote Preferences" />
     <CheckBoxPreference android:title="Use debug server"
                         android:key="account_is_debug"
                         android:summary="Connecting to a debug server instead of prod server"/>

@@ -10,18 +10,18 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.aqnote.module.account.BeanPool;
 import com.aqnote.module.account.Constant;
 import com.aqnote.module.account.R;
 
-import static com.aqnote.module.account.Constant.AUTHENTICATE;
-import static com.aqnote.module.account.activity.AuthenticatorActivity.ARG_ACCOUNT_TYPE;
-import static com.aqnote.module.account.activity.AuthenticatorActivity.KEY_ERROR_MESSAGE;
-import static com.aqnote.module.account.activity.AuthenticatorActivity.PARAM_USER_PASS;
+import static com.aqnote.module.account.activity.SignInActivity.ARG_ACCOUNT_TYPE;
+import static com.aqnote.module.account.activity.SignInActivity.KEY_ERROR_MESSAGE;
+import static com.aqnote.module.account.activity.SignInActivity.PARAM_USER_PASS;
 
 /**
- * In charge of the Sign up process. Since it's not an AuthenticatorActivity decendent,
- * it returns the result back to the calling activity, which is an AuthenticatorActivity,
- * and it return the result back to the Authenticator
+ * In charge of the Sign up process. Since it's not an SignInActivity decendent,
+ * it returns the result back to the calling activity, which is an SignInActivity,
+ * and it return the result back to the AccountAuthenticator
  *
  * User: udinic
  */
@@ -36,7 +36,7 @@ public class SignUpActivity extends Activity {
 
         mAccountType = getIntent().getStringExtra(ARG_ACCOUNT_TYPE);
 
-        setContentView(R.layout.account_register);
+        setContentView(R.layout.account_signup);
 
         findViewById(R.id.alreadyMember).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,7 +71,7 @@ public class SignUpActivity extends Activity {
                 String authtoken = null;
                 Bundle data = new Bundle();
                 try {
-                    authtoken = AUTHENTICATE.userSignUp(name, accountName, accountPassword, Constant.AUTHTOKEN_TYPE_FULL_ACCESS);
+                    authtoken = BeanPool.AUTHENTICATE.signUp(name, accountName, accountPassword, Constant.AUTHTOKEN_TYPE_FULL_ACCESS);
 
                     data.putString(AccountManager.KEY_ACCOUNT_NAME, accountName);
                     data.putString(AccountManager.KEY_ACCOUNT_TYPE, mAccountType);

@@ -2,8 +2,7 @@ package com.aqnote.app.test.util;
 
 import java.io.*;
 import java.net.*;
-import java.util.*;   
-//import org.apache.http.conn.util.InetAddressUtils;
+import java.util.*;
 
 public class IpAddressUtil {
 

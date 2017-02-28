@@ -1,12 +1,16 @@
 apply plugin: 'com.android.application'
-
 apply from: '../config/config.gradle'
 
 android {
 
+    compileSdkVersion 25         // 编译的SDK版本
+    buildToolsVersion "25.0.0"  // 编译的Tools版本
+
     defaultConfig {
         applicationId "com.aqnote.app.barcode"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        minSdkVersion 25                        // 支持的最低版本
+        targetSdkVersion 25                     // 支持的目标版本
     }
 
     buildTypes {                                    // build类型

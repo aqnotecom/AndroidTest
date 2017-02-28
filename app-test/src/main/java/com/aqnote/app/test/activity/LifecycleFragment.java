@@ -1,12 +1,9 @@
 package com.aqnote.app.test.activity;
 
-import android.annotation.TargetApi;
-import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.AttributeSet;
 import android.view.Gravity;

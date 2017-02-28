@@ -7,7 +7,6 @@ import android.view.Gravity;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.aqnote.app.test.R;
 import com.aqnote.app.test.util.IpAddressUtil;
 
 public class AboutActivity extends Activity {
@@ -31,11 +30,9 @@ public class AboutActivity extends Activity {
         sb.append("ip address: ").append(IpAddressUtil.getIPAddress(true)).append("\n");
         sb.append("mac address: ").append(IpAddressUtil.getMACAddress("eth0")).append("\n");
         textView.setText(sb.toString());
-
-        LinearLayout.LayoutParams textViewParams = new LinearLayout.LayoutParams(
+        layout.addView(textView, new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.WRAP_CONTENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT);
-        layout.addView(textView, textViewParams);
+                LinearLayout.LayoutParams.WRAP_CONTENT));
 
 
     }

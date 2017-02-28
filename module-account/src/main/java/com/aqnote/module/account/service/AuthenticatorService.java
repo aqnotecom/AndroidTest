@@ -4,7 +4,7 @@ import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
 
-import com.aqnote.module.account.Authenticator;
+import com.aqnote.module.account.AccountAuthenticator;
 
 /**
  * Created with IntelliJ IDEA.
@@ -15,8 +15,7 @@ import com.aqnote.module.account.Authenticator;
 public class AuthenticatorService extends Service {
     @Override
     public IBinder onBind(Intent intent) {
-
-        Authenticator authenticator = new Authenticator(this);
+        AccountAuthenticator authenticator = new AccountAuthenticator(this);
         return authenticator.getIBinder();
     }
 }

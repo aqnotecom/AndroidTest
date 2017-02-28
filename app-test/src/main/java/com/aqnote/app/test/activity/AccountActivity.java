@@ -4,9 +4,12 @@ import android.accounts.Account;
 import android.accounts.AccountManager;
 import android.accounts.AccountManagerCallback;
 import android.accounts.AccountManagerFuture;
+import android.accounts.AuthenticatorException;
+import android.accounts.OperationCanceledException;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -15,7 +18,16 @@ import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 import com.aqnote.app.test.R;
-import com.aqnote.module.account.Constant;
+
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
+import java.net.URLConnection;
+
+import static com.aqnote.module.account.Constant.*;
 
 /**
  * Created with IntelliJ IDEA.
@@ -25,28 +37,6 @@ import com.aqnote.module.account.Constant;
  */
 public class AccountActivity extends Activity {
 
-
-    /**
-     * Account type id
-     */
-    public static final String ACCOUNT_TYPE = "com.aqnote.module.account";
-
-    /**
-     * Account name
-     */
-    public static final String ACCOUNT_NAME = "aqnote.com";
-
-    /**
-     * Auth token types
-     */
-    public static final String AUTHTOKEN_TYPE_READ_ONLY = "Read only";
-    public static final String AUTHTOKEN_TYPE_READ_ONLY_LABEL = "Read only access to an AQNote account";
-
-    public static final String AUTHTOKEN_TYPE_FULL_ACCESS = "Full access";
-    public static final String AUTHTOKEN_TYPE_FULL_ACCESS_LABEL = "Full access to an AQNote account";
-
-
-	
 	private static final String STATE_DIALOG = "state_dialog";
 	private static final String STATE_INVALIDATE = "state_invalidate";
 
@@ -86,6 +76,12 @@ public class AccountActivity extends Activity {
             @Override
             public void onClick(View v) {
                 showAccountPicker(AUTHTOKEN_TYPE_FULL_ACCESS, true);
+            }
+        });
+        findViewById(R.id.btnLoginWithGoogleAccount).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loginWithGoogleAccount();
             }
         });
 
@@ -229,7 +225,6 @@ public class AccountActivity extends Activity {
                             final String authtoken = bnd.getString(AccountManager.KEY_AUTHTOKEN);
                             showMessage(((authtoken != null) ? "SUCCESS!\ntoken: " + authtoken : "FAIL"));
                             Log.d("udinic", "GetTokenForAccount Bundle is " + bnd);
-
                         } catch (Exception e) {
                             e.printStackTrace();
                             showMessage(e.getMessage());
@@ -238,6 +233,101 @@ public class AccountActivity extends Activity {
                 }
         , null);
     }
+
+    private void loginWithGoogleAccount() {
+        Account[] accounts = mAccountManager.getAccountsByType("com.google");
+        if(accounts == null) {
+            Log.d(TAG, "account is null");
+            return;
+        }
+        for (Account ac : accounts) {
+            Log.d(TAG, ac.toString());
+        }
+        Account mAccount = accounts[0];
+        final String mAuthTokenType = "mail";
+
+        AccountManagerFuture<Bundle> accountManagerFuture = mAccountManager.getAuthToken(mAccount,
+                mAuthTokenType, null, false, new AccountManagerCallback<Bundle>() {
+                    @Override
+                    public void run(AccountManagerFuture<Bundle> future) {
+                        Bundle bundle;
+                        try {
+                            bundle = future.getResult();
+                            Intent intent = (Intent) bundle.get(AccountManager.KEY_INTENT);
+                            if (intent != null) {
+                                startActivity(intent);
+                            } else {
+                                // トークン取得
+                                String sToken = bundle.getString(AccountManager.KEY_AUTHTOKEN);
+                                // サービス認証
+                                authGoogle(sToken, mAuthTokenType);
+                            }
+                        } catch (OperationCanceledException e) {
+                            e.printStackTrace();
+                        } catch (AuthenticatorException e) {
+                            e.printStackTrace();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }, null);
+    }
+
+    private void authGoogle(String token, String tokenType) {
+        try {
+            URL url = new URL("https://www.google.com/accounts/TokenAuth?auth=" + token
+                    + "&service=" + tokenType + "&source=Android"
+                    + "&continue=http://www.google.com/");
+            URLConnection connection = url.openConnection();
+            connection.setUseCaches(false);
+            InputStream is = connection.getInputStream();
+            byte[] responseBodyByte = getBytesByInputStream(is);
+            String responseBody = new String(responseBodyByte, "UTF-8");
+
+            if (responseBody.contains("The page you requested is invalid")) {
+                Log.d(TAG, "The page you requested is invalid");
+                mAccountManager.invalidateAuthToken("com.google", token);
+            } else {
+                Toast.makeText(this, "Authentication Success", Toast.LENGTH_LONG).show();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            Log.d(TAG, "Login failure");
+        }
+    }
+
+    //从InputStream中读取数据，转换成byte数组，最后关闭InputStream
+    private byte[] getBytesByInputStream(InputStream is) {
+        byte[] bytes = null;
+        BufferedInputStream bis = new BufferedInputStream(is);
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        BufferedOutputStream bos = new BufferedOutputStream(baos);
+        byte[] buffer = new byte[1024 * 8];
+        int length = 0;
+        try {
+            while ((length = bis.read(buffer)) > 0) {
+                bos.write(buffer, 0, length);
+            }
+            bos.flush();
+            bytes = baos.toByteArray();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                bos.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            try {
+                bis.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return bytes;
+    }
+
 
     private void showMessage(final String msg) {
     	if (TextUtils.isEmpty(msg))

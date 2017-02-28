@@ -10,7 +10,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="10dp"
-            android:text="addAccount"/>
+            android:text="addAccount"
+            android:visibility="gone"/>
 
     <Button android:id="@+id/btnGetAuthToken"
             android:layout_width="match_parent"
@@ -29,5 +30,11 @@
             android:layout_height="wrap_content"
             android:padding="10dp"
             android:text="invalidateAuthToken"/>
+
+    <Button android:id="@+id/btnLoginWithGoogleAccount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="loginWithGoogleAccount"/>
 
 </LinearLayout>

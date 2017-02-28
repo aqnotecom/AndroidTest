@@ -1,6 +1,8 @@
 package com.aqnote.module.account;
 
-public class Constant {
+public interface Constant {
+
+    public static final String TAG = "com.aqnote.account";
 
     /**
      * Account type id
@@ -15,12 +17,9 @@ public class Constant {
     /**
      * Auth token types
      */
-    public static final String AUTHTOKEN_TYPE_READ_ONLY = "Read only";
-    public static final String AUTHTOKEN_TYPE_READ_ONLY_LABEL = "Read only access to an AQNote account";
+    public static final String AUTHTOKEN_TYPE_READ_ONLY = "r";
+    public static final String AUTHTOKEN_TYPE_READ_ONLY_LABEL = "Read only access to aqnote.com";
 
-    public static final String AUTHTOKEN_TYPE_FULL_ACCESS = "Full access";
-    public static final String AUTHTOKEN_TYPE_FULL_ACCESS_LABEL = "Full access to an AQNote account";
-
-    public static final IAuthenticate AUTHENTICATE = new DefaultAuthenticate();
-
+    public static final String AUTHTOKEN_TYPE_FULL_ACCESS = "rw";
+    public static final String AUTHTOKEN_TYPE_FULL_ACCESS_LABEL = "Full access to aqnote.com";
 }

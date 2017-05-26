@@ -10,10 +10,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
-import com.aqnote.app.test.util.AssertUtil;
+import com.aqnote.module.container.util.AssertUtil;
 
 /**
  * Created by madding on 6/30/16.
+ *
+ * 多任务例子
+ *
+ * @author "Peng Li"<aqnote.com@gmail.com>
  */
 public class TaskActivity extends Activity {
 

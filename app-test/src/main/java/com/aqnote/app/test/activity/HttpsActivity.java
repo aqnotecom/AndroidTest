@@ -18,18 +18,24 @@ import java.io.File;
 import java.io.InputStream;
 import java.io.PrintWriter;
 
+/**
+ *
+ * 模拟请求https接口页面
+ *
+ * @author "Peng Li"<aqnote.com@gmail.com>
+ */
 public class HttpsActivity extends Activity {
     private static final String TAG = HttpsActivity.class.getSimpleName();
 
     private Api exampleApi;
 
-    TextView mainTextView;
+    TextView   mainTextView;
     ScrollView mainTextScroller;
 
-    String caCertificateName = "master-cacert.pem";
-    String clientCertificateName = "client-cert.p12";
+    String caCertificateName         = "master-cacert.pem";
+    String clientCertificateName     = "client-cert.p12";
     String clientCertificatePassword = "chariot";
-    String exampleUrl = "https://www.aqnote.com";
+    String exampleUrl                = "https://www.aqnote.com";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -37,7 +43,7 @@ public class HttpsActivity extends Activity {
 
         this.setContentView(R.layout.activity_https);
         mainTextView = (TextView) this.findViewById(R.id.mainTextView);
-        mainTextScroller = (ScrollView)this.findViewById(R.id.mainTextScroller);
+        mainTextScroller = (ScrollView) this.findViewById(R.id.mainTextScroller);
     }
 
 

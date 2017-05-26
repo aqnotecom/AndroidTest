@@ -15,6 +15,11 @@ import com.aqnote.app.test.R;
 import com.aqnote.app.test.webview.AQWebChromeClient;
 import com.aqnote.app.test.webview.AQWebViewClient;
 
+/**
+ * webView使用
+ *
+ * @author "Peng Li"<aqnote.com@gmail.com>
+ */
 public class WebViewActivity extends Activity {
 
     private static final String  TAG    = WebViewActivity.class.getSimpleName();

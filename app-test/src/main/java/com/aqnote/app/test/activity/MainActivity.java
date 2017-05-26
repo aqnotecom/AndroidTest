@@ -3,8 +3,6 @@ package com.aqnote.app.test.activity;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -14,10 +12,8 @@ import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 
-import com.aqnote.app.test.util.AssertUtil;
-import com.aqnote.module.system.MultiDexHelper;
+import com.aqnote.module.container.util.AssertUtil;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Enumeration;
@@ -25,15 +21,21 @@ import java.util.List;
 
 import dalvik.system.DexFile;
 
+/**
+ *
+ * 入口页面
+ *
+ * @author "Peng Li"<aqnote.com@gmail.com>
+ */
 public class MainActivity extends Activity {
 
-    private static final String  TAG                 = MainActivity.class.getSimpleName();
-    private static final String  _ACTIVITY          = "_activity";
-    private static final String _PACKAGE            = MainActivity.class.getPackage().getName();
-    private static final String ACTIVITY_PACKAGE    = _PACKAGE + ".";
+    private static final String TAG              = MainActivity.class.getSimpleName();
+    private static final String _ACTIVITY        = "_activity";
+    private static final String _PACKAGE         = MainActivity.class.getPackage().getName();
+    private static final String ACTIVITY_PACKAGE = _PACKAGE + ".";
 
     private List<String> adapterNameList = new ArrayList<>();
-    private ListView listView;
+    private ListView             listView;
     private ArrayAdapter<String> adapter;
 
     private LinearLayout layout;
@@ -60,7 +62,7 @@ public class MainActivity extends Activity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         String activityClassString = data.getStringExtra(_ACTIVITY);
-        if(activityClassString == null || "".equalsIgnoreCase(activityClassString)) {
+        if (activityClassString == null || "".equalsIgnoreCase(activityClassString)) {
             return;
         }
         Intent intent = new Intent();
@@ -72,7 +74,7 @@ public class MainActivity extends Activity {
     private void addListView() {
         listView = new ListView(MainActivity.this);
 
-//        List<String> clazzStringList = MultiDexHelper.getAllClasses(MainActivity.this);
+//        List<String> clazzStringList = MultiDexUtil.getAllClasses(MainActivity.this);
 //        for(String clazzString : clazzStringList) {
 //            Class clazz = getClass(clazzString);
 //            if(_PACKAGE.equals(clazz.getPackage().getName())) {
@@ -87,6 +89,7 @@ public class MainActivity extends Activity {
         adapterNameList.add(LifecycleActivity.class.getSimpleName());
         adapterNameList.add(HttpsActivity.class.getSimpleName());
         adapterNameList.add(LeakCanaryActivity.class.getSimpleName());
+        adapterNameList.add(TelephonyActivity.class.getSimpleName());
         adapter = new AQAdapter<String>(this, adapterNameList);
 
         listView.setAdapter(adapter);
@@ -109,7 +112,7 @@ public class MainActivity extends Activity {
     public class AQAdapterView implements AdapterView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            String activityName =  ACTIVITY_PACKAGE + adapterNameList.get(position);
+            String activityName = ACTIVITY_PACKAGE + adapterNameList.get(position);
             MainActivity.this.startActivity(new Intent(MainActivity.this, MainActivity.getClass(activityName)));
         }
     }
@@ -124,7 +127,7 @@ public class MainActivity extends Activity {
     }
 
     public List<Class> getClassName(String packageName) {
-        List<Class>classNameList=new ArrayList<Class>();
+        List<Class> classNameList = new ArrayList<Class>();
         try {
 
             DexFile df = new DexFile(getPackageCodePath());//通过DexFile查找当前的APK中可执行文件
@@ -134,7 +137,7 @@ public class MainActivity extends Activity {
 
                 if (className.contains(packageName)) {//在当前所有可执行的类里面查找包含有该包名的所有类
                     Class clazz = getClass(className);
-                    if(clazz != null) {
+                    if (clazz != null) {
                         classNameList.add(clazz);
                     }
                 }
@@ -142,7 +145,7 @@ public class MainActivity extends Activity {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return  classNameList;
+        return classNameList;
     }
 
 }

@@ -9,18 +9,20 @@ import android.webkit.WebViewClient;
 
 /**
  * Created by madding on 5/26/16.
+ *
+ * @author "Peng Li"<aqnote.com@gmail.com>
  */
 public class AQWebViewClient extends WebViewClient {
 
     private static final String TAG = AQWebViewClient.class.getSimpleName();
 
     @Override
-    public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request)  {
+    public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
         return false;
     }
 
     @Override
-    public void onReceivedSslError (WebView view, SslErrorHandler handler, SslError error) {
+    public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
         Log.e(TAG, error.toString());
         handler.proceed();
     }

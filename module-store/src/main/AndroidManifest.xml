@@ -1,16 +1,15 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.aqnote.module.store">
 
-
-
     <application
         android:allowBackup="true"
         android:label="@string/app_name"
         android:supportsRtl="true">
 
-        <provider android:name="com.aqnote.module.store.contentprovider.MultiprocessPreferences"
-                  android:authorities="@string/module_store_multiprocess_preferences"
-                  android:exported="false"/>
+        <provider
+            android:name="com.aqnote.module.store.contentprovider.MultiprocessPreferences"
+            android:authorities="@string/module_store_multiprocess_preferences"
+            android:exported="false"/>
 
     </application>
 

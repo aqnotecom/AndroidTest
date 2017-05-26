@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 /**
  * Created by madding on 6/30/16.
+ *
+ * @author "Peng Li"<aqnote.com@gmail.com>
  */
 public class DisplayActivity extends Activity {
     private static final String TAG = DisplayActivity.class.getSimpleName();

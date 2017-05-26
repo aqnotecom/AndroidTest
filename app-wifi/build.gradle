@@ -1,0 +1,141 @@
+apply plugin: 'com.android.application'
+apply plugin: 'jacoco-android'
+apply from: '../config/config.gradle'
+
+android {
+
+    defaultConfig {
+        applicationId "com.aqnote.app.wifianalyzer"
+    }
+
+    buildTypes {                                    // build类型
+        release {                                   // 发布
+            signingConfig signingConfigs.release    // 设置签名信息
+            minifyEnabled true                      // 混淆开启
+            shrinkResources true                    //移除无用的resource 文件
+            zipAlignEnabled true                    //对齐
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'  // 指定混淆规则文件
+
+        }
+        debug {                                      // 调试
+            signingConfig signingConfigs.debug       // 设置签名信息
+            minifyEnabled false                      // 混淆开启
+            testCoverageEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'  // 指定混淆规则文件
+        }
+    }
+
+    testOptions {
+        unitTests.all {
+            jacoco {
+                includeNoLocationClasses true
+            }
+        }
+    }
+}
+
+dependencies {
+
+    compile 'com.android.support:appcompat-v7:25.3.1'
+    compile 'com.android.support:design:25.3.1'
+
+    compile 'org.apache.commons:commons-lang3:3.5'
+    compile 'com.jjoe64:graphview:4.1.1'
+
+    testCompile 'org.powermock:powermock-module-junit4:1.6.5'
+    testCompile 'org.powermock:powermock-api-mockito:1.6.5'
+    testCompile 'com.googlecode.junit-toolbox:junit-toolbox:2.2'
+    testCompile 'org.robolectric:robolectric:3.1.4'
+    testCompile 'org.robolectric:shadows-support-v4:3.1.4'
+}
+
+//acoco {
+//    toolVersion "0.7.7.201606060606"
+//}
+//
+//jacocoAndroidUnitTestReport {
+//    excludes += ['**/com/jjoe64/*']
+//    html.enabled true
+//    xml.enabled true
+//    csv.enabled false
+//}
+//
+//if (project.hasProperty('keyAlias')) {
+//    def propertiesFile = file('../../keystores/androidkeystore.properties')
+//    def Properties properties = readProperties(propertiesFile);
+//
+//    System.out.println(">>> Signing Config " + properties)
+//    android.buildTypes.release.signingConfig.keyAlias = properties['key_alias'].toString()
+//    android.buildTypes.release.signingConfig.keyPassword = properties['key_password'].toString()
+//    android.buildTypes.release.signingConfig.storeFile = file(properties['store_filename'].toString())
+//    android.buildTypes.release.signingConfig.storePassword = properties['store_password'].toString()
+//}
+//
+//updateVersion()
+
+def updateVersion() {
+    def propertiesFile = file('build.properties')
+    def Properties properties = readProperties(propertiesFile)
+
+    def versionMajor = properties['version_major'].toString().toInteger()
+    def versionMinor = properties['version_minor'].toString().toInteger()
+    def versionPatch = properties['version_patch'].toString().toInteger()
+    def versionBuild = properties['version_build'].toString().toInteger()
+    def versionStore = properties['version_store'].toString().toInteger()
+
+    if (isReleaseTask()) {
+        System.out.println(">>> Building Release...")
+        versionPatch++
+        versionStore++
+        versionBuild = 0
+        properties['version_patch'] = versionPatch.toString()
+        properties['version_store'] = versionStore.toString()
+        properties['version_build'] = versionBuild.toString()
+        writeProperties(propertiesFile, properties)
+    }
+    if (isCompileTask()) {
+        System.out.println(">>> Compiling Source...")
+        versionBuild++
+        properties['version_build'] = versionBuild.toString()
+        writeProperties(propertiesFile, properties)
+    }
+
+    def versionName = "${versionMajor}.${versionMinor}.${versionPatch}"
+    if (android.defaultConfig.applicationId.endsWith(".BETA")) {
+        versionName = versionName + ".${versionBuild}"
+    }
+    System.out.println(">>> " + project.parent.name + " " + versionName + " (" + versionStore + ") '" + android.defaultConfig.applicationId + "'")
+    android.defaultConfig.versionCode = versionStore
+    android.defaultConfig.versionName = versionName
+}
+
+def isCompileTask() {
+    def tasks = gradle.getStartParameter().getTaskNames()
+    return ':app:generateDebugSources' in tasks || ':app:generateReleaseSources' in tasks ||
+            'generateDebugSources' in tasks || 'generateReleaseSources' in tasks
+}
+
+def isReleaseTask() {
+    def tasks = gradle.getStartParameter().getTaskNames()
+    return ':app:assembleRelease' in tasks || 'assembleRelease' in tasks
+}
+
+def Properties readProperties(propertiesFile) {
+    if (propertiesFile.canRead()) {
+        def Properties properties = new Properties()
+        def inputStream = new FileInputStream(propertiesFile)
+        properties.load(inputStream)
+        inputStream.close()
+        return properties
+    } else {
+        def message = ">>> Could not read " + propertiesFile.name + " file!"
+        System.err.println(message)
+        throw new GradleException(message)
+    }
+}
+
+def writeProperties(propertiesFile, properties) {
+    def writer = propertiesFile.newWriter()
+    properties.store(writer, "Build Properties")
+    writer.close()
+}

@@ -27,23 +27,23 @@ import java.io.InputStream;
 import java.net.URL;
 import java.net.URLConnection;
 
-import static com.aqnote.module.account.Constant.*;
+import static com.aqnote.module.account.Constant.ACCOUNT_TYPE;
+import static com.aqnote.module.account.Constant.AUTHTOKEN_TYPE_FULL_ACCESS;
 
 /**
- * Created with IntelliJ IDEA.
- * User: Udini
- * Date: 21/03/13
- * Time: 13:50
+ * 获取系统账号页面
+ *
+ * @author "Peng Li"<aqnote.com@gmail.com>
  */
 public class AccountActivity extends Activity {
 
-	private static final String STATE_DIALOG = "state_dialog";
-	private static final String STATE_INVALIDATE = "state_invalidate";
+    private static final String STATE_DIALOG     = "state_dialog";
+    private static final String STATE_INVALIDATE = "state_invalidate";
 
     private String TAG = this.getClass().getSimpleName();
     private AccountManager mAccountManager;
-    private AlertDialog mAlertDialog;
-    private boolean mInvalidate;
+    private AlertDialog    mAlertDialog;
+    private boolean        mInvalidate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,26 +86,27 @@ public class AccountActivity extends Activity {
         });
 
         if (savedInstanceState != null) {
-        	boolean showDialog = savedInstanceState.getBoolean(STATE_DIALOG);
-        	boolean invalidate = savedInstanceState.getBoolean(STATE_INVALIDATE);
-        	if (showDialog) {
-        		showAccountPicker(AUTHTOKEN_TYPE_FULL_ACCESS, invalidate);
-        	}
+            boolean showDialog = savedInstanceState.getBoolean(STATE_DIALOG);
+            boolean invalidate = savedInstanceState.getBoolean(STATE_INVALIDATE);
+            if (showDialog) {
+                showAccountPicker(AUTHTOKEN_TYPE_FULL_ACCESS, invalidate);
+            }
         }
 
     }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
-    	super.onSaveInstanceState(outState);
-    	if (mAlertDialog != null && mAlertDialog.isShowing()) {
-    		outState.putBoolean(STATE_DIALOG, true);
-    		outState.putBoolean(STATE_INVALIDATE, mInvalidate);
-    	}
+        super.onSaveInstanceState(outState);
+        if (mAlertDialog != null && mAlertDialog.isShowing()) {
+            outState.putBoolean(STATE_DIALOG, true);
+            outState.putBoolean(STATE_INVALIDATE, mInvalidate);
+        }
     }
 
     /**
      * Add new account to the account manager
+     *
      * @param accountType
      * @param authTokenType
      */
@@ -128,10 +129,11 @@ public class AccountActivity extends Activity {
 
     /**
      * Show all the accounts registered on the account manager. Request an auth token upon user select.
+     *
      * @param authTokenType
      */
     private void showAccountPicker(final String authTokenType, final boolean invalidate) {
-    	mInvalidate = invalidate;
+        mInvalidate = invalidate;
         final Account availableAccounts[] = mAccountManager.getAccountsByType(ACCOUNT_TYPE);
 
         if (availableAccounts.length == 0) {
@@ -146,7 +148,7 @@ public class AccountActivity extends Activity {
             mAlertDialog = new AlertDialog.Builder(this).setTitle("Pick Account").setAdapter(new ArrayAdapter<String>(getBaseContext(), android.R.layout.simple_list_item_1, name), new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    if(invalidate)
+                    if (invalidate)
                         invalidateAuthToken(availableAccounts[which], authTokenType);
                     else
                         getExistingAccountAuthToken(availableAccounts[which], authTokenType);
@@ -158,6 +160,7 @@ public class AccountActivity extends Activity {
 
     /**
      * Get the auth token for an existing account on the AccountManager
+     *
      * @param account
      * @param authTokenType
      */
@@ -183,11 +186,12 @@ public class AccountActivity extends Activity {
 
     /**
      * Invalidates the auth token for the account
+     *
      * @param account
      * @param authTokenType
      */
     private void invalidateAuthToken(final Account account, String authTokenType) {
-        final AccountManagerFuture<Bundle> future = mAccountManager.getAuthToken(account, authTokenType, null, this, null,null);
+        final AccountManagerFuture<Bundle> future = mAccountManager.getAuthToken(account, authTokenType, null, this, null, null);
 
         new Thread(new Runnable() {
             @Override
@@ -211,6 +215,7 @@ public class AccountActivity extends Activity {
      * If not exist - add it and then return its auth token.
      * If one exist - return its auth token.
      * If more than one exists - show a picker and return the select account's auth token.
+     *
      * @param accountType
      * @param authTokenType
      */
@@ -231,12 +236,12 @@ public class AccountActivity extends Activity {
                         }
                     }
                 }
-        , null);
+                , null);
     }
 
     private void loginWithGoogleAccount() {
         Account[] accounts = mAccountManager.getAccountsByType("com.google");
-        if(accounts == null) {
+        if (accounts == null) {
             Log.d(TAG, "account is null");
             return;
         }
@@ -330,7 +335,7 @@ public class AccountActivity extends Activity {
 
 
     private void showMessage(final String msg) {
-    	if (TextUtils.isEmpty(msg))
+        if (TextUtils.isEmpty(msg))
             return;
 
         runOnUiThread(new Runnable() {

@@ -3,56 +3,45 @@
           package="com.aqnote.app.test">
 
     <!--Camera: 访问相机-->
-    <uses-permission android:name="androi.permission.CAMERA" />
+    <uses-permission android:name="androi.permission.CAMERA"/>
     <!--Sensors: 访问传感器信息，体态和指纹信息-->
-    <uses-permission android:name="androi.permission.BODY_SENSORS" />
-    <uses-permission android:name="android.permission.USE_FINGERPRINT" />
+    <uses-permission android:name="androi.permission.BODY_SENSORS"/>
+    <uses-permission android:name="android.permission.USE_FINGERPRINT"/>
     <!--Location: 访问设备定位信息-->
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />   <!--GPS  精确定位：访问GPS和网络获取定位-->
-    <uses-permission android:name="android.permssion.ACCESS_COARSE_LOCATION" />  <!--AGPS 模糊定位：访问放落获取定位-->
-    <uses-permission android:name="com.google.android.gms.permission.CAR_SPEED" /> <!--获取汽车速度-->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>   <!--GPS  精确定位：访问GPS和网络获取定位-->
+    <uses-permission android:name="android.permssion.ACCESS_COARSE_LOCATION"/>  <!--AGPS 模糊定位：访问放落获取定位-->
+    <uses-permission android:name="com.google.android.gms.permission.CAR_SPEED"/> <!--获取汽车速度-->
     <!--Storage: 访问扩展存储信息，如：照片、多媒体、文件-->
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTENAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTENAL_STORAGE"/>
     <!--Microphone: 读取麦克风-->
-    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
     <!--SMS: 读取、发送、接收短信、彩信-->
-    <uses-permission android:name="android.permission.READ_SMS" />
-    <uses-permission android:name="android.permission.READ_CELL_BROADCASTS" />
-    <uses-permission android:name="android.permission.SEND_SMS" />
-    <uses-permission android:name="android.permission.RECEIVE_SMS" />
-    <uses-permission android:name="android.permission.RECEIVE_MMS" />
-    <uses-permission android:name="android.permission.RECEIVE_WAP_PUSH" />
+    <uses-permission android:name="android.permission.READ_SMS"/>
+    <uses-permission android:name="android.permission.READ_CELL_BROADCASTS"/>
+    <uses-permission android:name="android.permission.SEND_SMS"/>
+    <uses-permission android:name="android.permission.RECEIVE_SMS"/>
+    <uses-permission android:name="android.permission.RECEIVE_MMS"/>
+    <uses-permission android:name="android.permission.RECEIVE_WAP_PUSH"/>
     <!--Car information: 访问汽车信息-->
-    <uses-permission android:name="com.google.android.gms.permission.CAR_INFORMATION" />
-    <uses-permission android:name="com.google.android.gms.permission.CAR_VENDOR_EXTENSION" />
-    <uses-permission android:name="com.google.android.gms.permission.CAR_MILEAGE" />
-    <uses-permission android:name="com.google.android.gms.permission.CAR_FUEL" />
+    <uses-permission android:name="com.google.android.gms.permission.CAR_INFORMATION"/>
+    <uses-permission android:name="com.google.android.gms.permission.CAR_VENDOR_EXTENSION"/>
+    <uses-permission android:name="com.google.android.gms.permission.CAR_MILEAGE"/>
+    <uses-permission android:name="com.google.android.gms.permission.CAR_FUEL"/>
     <!--Contacts: 访问联系人-->
-    <uses-permission android:name="android.permission.READ_CONTACTS" />
-    <uses-permission android:name="android.permission.WRITE_CONTACTS" />
-    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
-    <!--Phone: 使用和管理电话-->
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.CALL_PHONE" />
-    <uses-permission android:name="android.permission.READ_CALL_LOG" />
-    <uses-permission android:name="android.permission.WRITE_CALL_LOG" />
-    <uses-permission android:name="android.permission.USE_SIP" />
-    <uses-permission android:name="android.permission.ACCESS_UCE_OPTIONS_SERVICE" />
-    <uses-permission android:name="android.permission.ACCESS_UCE_PRESENCE_SERVICE" />
-    <uses-permission android:name="android.permission.ACCESS_IMS_CALL_SERVICE" />
-    <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS" />
-    <uses-permission android:name="com.android.voicemail.permission.ADD_VOICEMAIL" />
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
+    <uses-permission android:name="android.permission.WRITE_CONTACTS"/>
+    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
     <!--Calendar: 访问日历-->
-    <uses-permission android:name="android.permission.READ_CALENDAR" />
-    <uses-permission android:name="android.permission.WRITE_CALENDAR" />
+    <uses-permission android:name="android.permission.READ_CALENDAR"/>
+    <uses-permission android:name="android.permission.WRITE_CALENDAR"/>
 
     <!--访问网络权限：nG、WiFi-->
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.ChANGE_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
-    <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ChANGE_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE"/>
 
     <!--<uses-permission android:name="" />-->
     <!--<uses-permission android:name="" />-->
@@ -66,6 +55,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -74,39 +64,43 @@
         </activity>
         <activity android:name=".activity.AboutActivity">
             <intent-filter>
-                <action android:name="com.aqnote.app.test.activity.AboutActivity" />
-                <category android:name="android.intent.category.DEFAULT" />
+                <action android:name="com.aqnote.app.test.activity.AboutActivity"/>
+                <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
         <activity android:name=".activity.WebViewActivity">
             <intent-filter>
-                <action android:name="com.aqnote.app.test.activity.WebViewActivity" />
-                <category android:name="android.intent.category.DEFAULT" />
+                <action android:name="com.aqnote.app.test.activity.WebViewActivity"/>
+                <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
         <activity android:name=".activity.TaskActivity">
             <intent-filter>
-                <action android:name="com.aqnote.app.test.activity.TaskActivity" />
-                <category android:name="android.intent.category.DEFAULT" />
+                <action android:name="com.aqnote.app.test.activity.TaskActivity"/>
+                <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
 
-        <activity android:name=".activity.SpeechActivity" />
-        <activity android:name=".activity.AccountActivity" />
-        <activity android:name=".activity.LifecycleActivity" />
+        <activity android:name=".activity.SpeechActivity"/>
+        <activity android:name=".activity.AccountActivity"/>
+        <activity android:name=".activity.LifecycleActivity"/>
 
         <activity android:name=".activity.task.DisplayActivity">
             <intent-filter>
-                <action android:name="com.aqnote.app.test.activity.DisplayActivity" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <data android:scheme="aqnote" android:host="main" />
+                <action android:name="com.aqnote.app.test.activity.DisplayActivity"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data
+                    android:host="main"
+                    android:scheme="aqnote"/>
             </intent-filter>
         </activity>
 
-        <activity android:name=".activity.HttpsActivity" />
+        <activity android:name=".activity.HttpsActivity"/>
         <!--leak canary-->
-        <activity android:name=".activity.LeakCanaryActivity" />
-        <activity android:name=".activity.leakcanary.TestActivity" />
+        <activity android:name=".activity.LeakCanaryActivity"/>
+        <activity android:name=".activity.leakcanary.TestActivity"/>
+
+        <activity android:name=".activity.TelephonyActivity" />
 
     </application>
 

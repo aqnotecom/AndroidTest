@@ -10,11 +10,12 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app-barcode" />
             <option value="$PROJECT_DIR$/app-test" />
-            <option value="$PROJECT_DIR$/app-wifianalyzer" />
+            <option value="$PROJECT_DIR$/app-wifi" />
             <option value="$PROJECT_DIR$/module-account" />
-            <option value="$PROJECT_DIR$/module-rpc" />
+            <option value="$PROJECT_DIR$/module-channel" />
+            <option value="$PROJECT_DIR$/module-container" />
             <option value="$PROJECT_DIR$/module-store" />
-            <option value="$PROJECT_DIR$/module-system" />
+            <option value="$PROJECT_DIR$/module-telephony" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

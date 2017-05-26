@@ -18,14 +18,17 @@ import android.widget.RelativeLayout;
 
 import com.aqnote.app.test.R;
 
-import static com.aqnote.app.test.log.LifecycleLog.*;
-import static com.aqnote.app.test.log.LifecycleLog.LifecycleState.CALL_TO_SUPER;
-import static com.aqnote.app.test.log.LifecycleLog.LifecycleState.RETURN_FROM_SUPER;
+import static com.aqnote.module.container.log.LifecycleLog.*;
+import static com.aqnote.module.container.log.LifecycleLog.LifecycleState.CALL_TO_SUPER;
+import static com.aqnote.module.container.log.LifecycleLog.LifecycleState.RETURN_FROM_SUPER;
 
 /**
  * Created by madding on 2/23/17.
+ *
+ * 测试活动生命周期页面
+ *
+ * @author "Peng Li"<aqnote.com@gmail.com>
  */
-
 @TargetApi(Build.VERSION_CODES.N)
 public class LifecycleActivity extends Activity {
 

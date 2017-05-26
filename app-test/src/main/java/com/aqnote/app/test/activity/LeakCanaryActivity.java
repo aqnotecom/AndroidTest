@@ -12,7 +12,12 @@ import android.widget.LinearLayout;
 
 import com.aqnote.app.test.activity.leakcanary.TestActivity;
 
-
+/**
+ *
+ * 模拟内存泄漏页面
+ *
+ * @author "Peng Li"<aqnote.com@gmail.com>
+ */
 public class LeakCanaryActivity extends Activity {
 
     @Override
@@ -44,6 +49,7 @@ public class LeakCanaryActivity extends Activity {
     }
 
     private static final int MENU_ITEM_ITEM1 = 1;
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         menu.add(Menu.NONE, MENU_ITEM_ITEM1, Menu.NONE, "test");

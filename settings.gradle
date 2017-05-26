@@ -1,6 +1,10 @@
-include ':app-test', ':module-system', ':module-rpc',
-        ':app-wifianalyzer',
-        ':module-store',
-        ':app-barcode',
-        ':module-account'
+include ':app-test'
+include ':app-wifi'
+include ':app-barcode'
+
+include ':module-container'
+include ':module-channel'
+include ':module-store'
+include ':module-account'
+include ':module-telephony'
 

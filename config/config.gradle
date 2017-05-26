@@ -1,67 +1,186 @@
 
 android {
 
-    defaultConfig {
-        versionCode 1                           // 版本号
-        versionName "1.0.0"                     // 版本名
-    }
+	compileSdkVersion 25						// 编译的SDK版本
+	buildToolsVersion '25.0.0'					// 编译的Tools版本
 
-    sourceSets {
-        main {
-            manifest.srcFile 'src/main/AndroidManifest.xml'     // 指定AndroidManifest文件
-            java.srcDirs = ['src/main/java']                    // 指定source目录
-            resources.srcDirs = ['src/main/java']               // 指定source目录
-            aidl.srcDirs = ['src/main/java']                    // 指定source目录
-            renderscript.srcDirs = ['src/main/java']            // 指定source目录
-            res.srcDirs = ['src/main/res']                      // 指定资源目录
-            assets.srcDirs = ['src/main/assets']                // 指定assets目录
-            jniLibs.srcDirs = ['libs']                          // 指定lib库目录
-        }
+	defaultConfig {
+		versionCode 1                           // 版本号
+		versionName "1.0.0"                     // 版本名
 
-        unitTest {
-            java.srcDir file('src/test/java')
-            resources.srcDir file('src/test/res')
-        }
+		minSdkVersion 19                        // 支持的最低版本
+		targetSdkVersion 25                     // 支持的目标版本
 
-        instrumentTest {
-            manifest.srcFile file('src/androidTest/AndroidManifest.xml')
-            java.srcDirs = ['src/androidTest/java']
-            resources.srcDirs = ['src/androidTest/java']
-            res.srcDirs = ['src/androidTest/res']
-            assets.srcDirs = ['src/androidTest/assets']
-        }
+//		// Android 2.3 (API level 9) and higher
+//		renderscriptTargetApi 18
+//		renderscriptSupportModeEnabled true
 
-        debug.setRoot('build-types/debug')          // 指定debug模式的路径
-        release.setRoot('build-types/release')      // 指定release模式的路径
-    }
+		// Testing Support Library
+		testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+	}
 
-    signingConfigs {                            // 签名配置
-        // keytool -genkey -keystore yudao.keystore -keyalg RSA -validity 10950 -alias aqnote
-        // keytool -keystore yudao.keystore -list
-        release {                               // 发布版签名配置
-            storeFile file("keystore/yudao.keystore")    // 密钥文件路径
-            storePassword "hell01234"               // 密钥文件密码
-            keyAlias "yudao"                   // key别名
-            keyPassword "hell01234"                 // key密码
-        }
-        // keytool -genkey -v -keystore debug.keystore -alias androiddebugkey -storepass android -keypass android -keyalg RSA -validity 14000
-        // CN=Android Debug, OU=Unknown, O=Android, L=Unknown, ST=Unknown, C=US
-        debug {                                 // debug版签名配置
-            storeFile file("keystore/debug.keystore")
-            storePassword "android"
-            keyAlias "androiddebugkey"
-            keyPassword "android"
-        }
-    }
+	aaptOptions {
 
-    lintOptions {
-        abortOnError false                          // lint时候终止错误上报,防止编译的时候莫名的失败
-    }
+	}
+
+	dexOptions {
+
+	}
+
+	lintOptions {
+		abortOnError false                          // lint时候终止错误上报,防止编译的时候莫名的失败
+	}
+
+	testOptions {
+
+	}
+
+	compileOptions {
+		sourceCompatibility JavaVersion.VERSION_1_7
+		targetCompatibility JavaVersion.VERSION_1_7
+		encoding			"UTF-8"
+	}
+
+	packagingOptions {
+
+	}
+
+	jacoco {
+
+	}
+
+	adbOptions {
+
+	}
+
+	splits {
+
+	}
+
+	// Data Binding Support
+	dataBinding {
+//		enabled = true
+	}
+
+	buildTypes {
+
+	}
+
+	productFlavors {
+
+	}
+
+	signingConfigs {                            		 // 签名配置
+		// keytool -genkey -keystore yudao.keystore -keyalg RSA -validity 10950 -alias aqnote
+		// keytool -keystore yudao.keystore -list
+		release {                               		 // 发布版签名配置
+			storeFile file("keystore/yudao.keystore")    // 密钥文件路径
+			storePassword "hell01234"               	 // 密钥文件密码
+			keyAlias "yudao"                  			 // key别名
+			keyPassword "hell01234"                 	 // key密码
+		}
+		// keytool -genkey -v -keystore debug.keystore -alias androiddebugkey -storepass android -keypass android -keyalg RSA -validity 14000
+		// CN=Android Debug, OU=Unknown, O=Android, L=Unknown, ST=Unknown, C=US
+		debug {                                 		 // debug版签名配置
+			storeFile file("keystore/debug.keystore")
+			storePassword "android"
+			keyAlias "androiddebugkey"
+			keyPassword "android"
+		}
+	}
+
+	sourceSets {
+		main {
+			manifest.srcFile 'src/main/AndroidManifest.xml'     // 指定AndroidManifest文件
+			java.srcDirs = ['src/main/java']                    // 指定source目录
+			resources.srcDirs = ['src/main/java']               // 指定source目录
+			aidl.srcDirs = ['src/main/java']                    // 指定source目录
+			renderscript.srcDirs = ['src/main/java']            // 指定source目录
+			res.srcDirs = ['src/main/res']                      // 指定资源目录
+			assets.srcDirs = ['src/main/assets']                // 指定assets目录
+			jniLibs.srcDirs = ['libs']                          // 指定lib库目录
+		}
+
+		unitTest {
+			java.srcDir file('src/test/java')
+			resources.srcDir file('src/test/res')
+		}
+
+		instrumentTest {
+			manifest.srcFile file('src/androidTest/AndroidManifest.xml')
+			java.srcDirs = ['src/androidTest/java']
+			resources.srcDirs = ['src/androidTest/java']
+			res.srcDirs = ['src/androidTest/res']
+			assets.srcDirs = ['src/androidTest/assets']
+		}
+
+		debug.setRoot('build-types/debug')          // 指定debug模式的路径
+		release.setRoot('build-types/release')      // 指定release模式的路径
+	}
+
 }
 
+build {
+
+}
+
+help {
+
+}
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    testCompile 'junit:junit:4.12'
-}
+	compile fileTree(dir: 'libs', include: ['*.jar'])
 
+	testCompile 'junit:junit:4.12'
+
+	/** Support Library **/
+//	// adding annotation metadata
+//	compile 'com.android.support:support-annotations:25.3.1'
+//
+//	// multiple Dalvik Executable (DEX) files
+//	compile 'com.android.support:multidex:1.0.0'
+//
+//	// for vector graphics
+//	compile 'com.android.support:support-vector-drawable:25.3.1'
+//	compile 'com.android.support:animated-vector-drawable:25.3.1'
+//
+//	// adding material design components and patterns
+//	compile 'com.android.support:design:25.3.1'
+//	compile 'com.android.support:customtabs:25.3.1'
+//
+//	// adding and managing percentage based dimensions
+//	compile 'com.android.support:percent:25.3.1'
+
+//	// Android 2.3 (API level 9) and higher
+//	compile 'com.android.support:support-compat:25.3.1'
+//	compile 'com.android.support:support-core-utils:25.3.1'
+//	compile 'com.android.support:support-core-ui:25.3.1'
+//	compile 'com.android.support:support-media-compat:25.3.1'
+//	compile 'com.android.support:support-fragment:25.3.1'
+
+//	// Android 2.3 (API level 9) and higher
+//	compile 'com.android.support:appcompat-v7:25.3.1'
+//	compile 'com.android.support:cardview-v7:25.3.1'
+//	compile 'com.android.support:gridlayout-v7:25.3.1'
+//	compile 'com.android.support:mediarouter-v7:25.3.1'
+//	compile 'com.android.support:palette-v7:25.3.1'
+//	compile 'com.android.support:recyclerview-v7:25.3.1'
+//	compile 'com.android.support:preference-v7:25.3.1'
+
+//	// Android 3.2 (API level 13) and higher, for Pad
+//	compile 'com.android.support:support-v13:25.3.1'
+//
+//	compile 'com.android.support:preference-v14:25.3.1'
+//
+//	// for TV
+//	compile 'com.android.support:preference-leanback-v17:25.3.1'
+//	compile 'com.android.support:leanback-v17:25.3.1'
+//	compile 'com.android.support:recommendation:25.3.1'
+
+	/** Testing Support Library **/
+//	androidTestCompile 'com.android.support.test:runner:0.5'
+//	androidTestCompile 'com.android.support.test:rules:0.5'
+	androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.2'
+	androidTestCompile 'com.android.support:support-annotations:25.+'
+//	androidTestCompile 'com.android.support.test.uiautomator:uiautomator-v18:2.1.2'
+}

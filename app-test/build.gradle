@@ -2,56 +2,60 @@ apply plugin: 'com.android.application'
 apply from: '../config/config.gradle'
 
 allprojects {
-	tasks.withType(JavaCompile) {
+    tasks.withType(JavaCompile) {
 //        options.compilerArgs << "-Xlint:unchecked" // -Xlint:deprecation
-	}
+    }
 }
 
 android {
 
-	defaultConfig {                             // 默认配置
-		applicationId 'com.aqnote.app.test'     // 应用程序的包名
-	}
+    defaultConfig {                             // 默认配置
+        applicationId 'com.aqnote.app.test'     // 应用程序的包名
+    }
 
-	packagingOptions {
-		exclude 'META-INF/ASL2.0'
-		exclude 'META-INF/LICENSE'
-		exclude 'META-INF/NOTICE'
-		exclude 'META-INF/MANIFEST.MF'
-	}
+    packagingOptions {
+        exclude 'META-INF/ASL2.0'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/MANIFEST.MF'
+    }
 
-	buildTypes {                                    // build类型
-		release {                                   // 发布
-			signingConfig signingConfigs.release    // 设置签名信息
-			minifyEnabled true                      // 混淆开启
-			shrinkResources true                    //移除无用的resource 文件
-			zipAlignEnabled true                    //对齐
-			proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'  // 指定混淆规则文件
+    buildTypes {                                    // build类型
+        release {                                   // 发布
+            signingConfig signingConfigs.release    // 设置签名信息
+            minifyEnabled true                      // 混淆开启
+            shrinkResources true                    //移除无用的resource 文件
+            zipAlignEnabled true                    //对齐
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            // 指定混淆规则文件
 
-			multiDexEnabled true
+            multiDexEnabled true
 //            multiDexKeepProguard 'multidex-config.pro'
 //            multiDexKeepFile file 'multidex-config.txt'
 
-		}
-		debug {                                      // 调试
-			signingConfig signingConfigs.debug       // 设置签名信息
-			minifyEnabled false                      // 混淆开启
-			testCoverageEnabled true
-			proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'  // 指定混淆规则文件
-		}
-	}
+        }
+        debug {                                      // 调试
+            signingConfig signingConfigs.debug       // 设置签名信息
+            minifyEnabled false                      // 混淆开启
+            testCoverageEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            // 指定混淆规则文件
+        }
+    }
 }
 
 
 dependencies {
 
-	compile project(':module-store')
-	compile project(':module-account')
-	compile project(':module-channel')
-	compile project(':module-telephony')
+    compile project(':module-store')
+    compile project(':module-account')
+    compile project(':module-channel')
+    compile project(':module-telephony')
 
-	debugCompile 'com.squareup.leakcanary:leakcanary-android:1.3'
-	releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.3'
 
+    compile 'com.google.android.gms:play-services-ads:10.2.6'
+    compile 'com.google.android.gms:play-services-auth:10.2.6'
+    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.3'
+    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.3'
 }
 

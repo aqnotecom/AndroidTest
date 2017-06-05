@@ -96,11 +96,19 @@
         </activity>
 
         <activity android:name=".activity.HttpsActivity"/>
-        <!--leak canary-->
-        <activity android:name=".activity.LeakCanaryActivity"/>
-        <activity android:name=".activity.leakcanary.TestActivity"/>
+        <!--&lt;!&ndash;leak canary&ndash;&gt;-->
+        <!--<activity android:name=".activity.LeakCanaryActivity"/>-->
+        <!--<activity android:name=".activity.leakcanary.TestActivity"/>-->
 
-        <activity android:name=".activity.TelephonyActivity" />
+        <activity android:name=".activity.TelephonyActivity"/>
+
+        <receiver
+            android:name=".receiver.ReferrerReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.android.vending.INSTALL_REFERRER"/>
+            </intent-filter>
+        </receiver>
 
     </application>
 

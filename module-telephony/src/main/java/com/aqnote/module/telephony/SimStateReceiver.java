@@ -20,11 +20,11 @@ public class SimStateReceiver extends BroadcastReceiver {
 
     private static final String TAG = SimStateReceiver.class.getSimpleName();
 
-    private Callbackable callbackable;
+    private Callbackable<Object> callbackable;
 
     private SimStateReceiver() {}
 
-    public SimStateReceiver(Callbackable callbackable) {
+    public SimStateReceiver(Callbackable<Object> callbackable) {
         this.callbackable = callbackable;
     }
 
@@ -34,7 +34,7 @@ public class SimStateReceiver extends BroadcastReceiver {
 
         if (TextUtils.equals(intent.getAction(), ACTION_SIM_STATE_CHANGED)) {
             if (callbackable != null) {
-                callbackable.run();
+                callbackable.run(null);
             }
         }
     }

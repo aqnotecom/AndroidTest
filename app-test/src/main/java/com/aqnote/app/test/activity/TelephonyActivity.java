@@ -68,7 +68,7 @@ public class TelephonyActivity extends AQNoteActivity {
 
         mSimStateCallbackable = new Callbackable() {
             @Override
-            public void run() {
+            public void run(Object obj) {
                 mTextView.setText(getTelephonyData());
             }
         };

@@ -2,12 +2,12 @@
 
 buildscript {
     repositories {
-        jcenter()
+        jcenter() // maven(url "http://jcenter.bintray.com")
     }
 
     dependencies {
         classpath 'com.android.tools.build:gradle:2.3.0'
-//        classpath 'com.google.guava:guava:17.0'
+        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.4'
         classpath 'com.dicedmelon.gradle:jacoco-android:0.1.1'
     }
 }
@@ -16,7 +16,9 @@ allprojects {
     repositories {
         jcenter()
         mavenCentral()
+        mavenLocal()
         maven { url "https://maven.google.com" }
+        maven { url "http:/aqnote.local:8081" }
     }
 }
 

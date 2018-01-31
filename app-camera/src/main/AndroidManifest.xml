@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          android:versionCode="1"
+          android:versionName="1.0.0"
+          android:installLocation="auto"
+          package="com.aqnote.app.camera">
+
+    <uses-sdk android:minSdkVersion="4" android:targetSdkVersion="24" />
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+
+    <application
+        android:hardwareAccelerated="false"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name" android:theme="@style/Theme.ACTheme">
+        <activity
+            android:label="@string/app_name"
+            android:name=".AsciiCamActivity"
+            android:screenOrientation="landscape"
+            android:configChanges="keyboard|keyboardHidden">
+            <intent-filter >
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="LibraryActivity" />
+        <activity android:name="ViewImageActivity" android:screenOrientation="landscape" />
+        <activity android:name="AboutActivity" />
+        <activity android:name="AsciiCamPreferences" />
+        
+        <receiver android:name=".NewPictureReceiver"
+                  android:label="NewPictureReceiver"
+                  android:enabled="false">
+           <intent-filter>
+                <action android:name="android.hardware.action.NEW_PICTURE" />
+                <data android:mimeType="image/*" />
+            </intent-filter>
+        </receiver>
+        
+        <receiver android:name=".NewPictureReceiverLegacyBroadcast"
+                  android:label="NewPictureReceiverLegacyBroadcast"
+                  android:enabled="false">
+           <intent-filter>
+                <action android:name="com.android.camera.NEW_PICTURE" />
+                <data android:mimeType="image/*" />
+            </intent-filter>
+        </receiver>
+        
+        <service android:name=".NewPictureJob"
+                 android:permission="android.permission.BIND_JOB_SERVICE"
+                 android:exported="true" />
+
+        <provider
+            android:authorities="com.aqnote.ap.camera.fileprovider"
+            android:name="android.support.v4.content.FileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+
+    </application>
+    
+</manifest>

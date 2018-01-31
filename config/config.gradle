@@ -1,7 +1,10 @@
 android {
 
-    compileSdkVersion 25                        // 编译的SDK版本
-    buildToolsVersion '25.0.0'                    // 编译的Tools版本
+//    compileSdkVersion 26                        // 编译的SDK版本
+//    buildToolsVersion '25.0.0'                  // 编译的Tools版本
+
+    compileSdkVersion 27                        // 编译的SDK版本
+    buildToolsVersion '27.0.3'                  // 编译的Tools版本
 
     defaultConfig {
         versionCode 1                           // 版本号

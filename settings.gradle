@@ -1,6 +1,7 @@
 include ':app-test'
 include ':app-wifi'
 include ':app-barcode'
+include ':app-camera'
 
 include ':module-container'
 include ':module-channel'

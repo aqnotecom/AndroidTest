@@ -2,25 +2,18 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/android.app.iml" filepath="$PROJECT_DIR$/android.app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app-barcode/app-barcode.iml" filepath="$PROJECT_DIR$/app-barcode/app-barcode.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app-barcode/app-barcode.iml" filepath="$PROJECT_DIR$/app-barcode/app-barcode.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app-camera/app-camera.iml" filepath="$PROJECT_DIR$/app-camera/app-camera.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app-test/app-test.iml" filepath="$PROJECT_DIR$/app-test/app-test.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app-test/app-test.iml" filepath="$PROJECT_DIR$/app-test/app-test.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app-wifi/app-wifi.iml" filepath="$PROJECT_DIR$/app-wifi/app-wifi.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app-wifi/app-wifi.iml" filepath="$PROJECT_DIR$/app-wifi/app-wifi.iml" />
+      <module fileurl="file://$PROJECT_DIR$/module/account/account.iml" filepath="$PROJECT_DIR$/module/account/account.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/barcode/barcode.iml" filepath="$PROJECT_DIR$/app/barcode/barcode.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/camera/camera.iml" filepath="$PROJECT_DIR$/app/camera/camera.iml" />
+      <module fileurl="file://$PROJECT_DIR$/module/channel/channel.iml" filepath="$PROJECT_DIR$/module/channel/channel.iml" />
       <module fileurl="file://$PROJECT_DIR$/com.aqnote.android.main.iml" filepath="$PROJECT_DIR$/com.aqnote.android.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/module-account/module-account.iml" filepath="$PROJECT_DIR$/module-account/module-account.iml" />
-      <module fileurl="file://$PROJECT_DIR$/module-account/module-account.iml" filepath="$PROJECT_DIR$/module-account/module-account.iml" />
-      <module fileurl="file://$PROJECT_DIR$/module-channel/module-channel.iml" filepath="$PROJECT_DIR$/module-channel/module-channel.iml" />
-      <module fileurl="file://$PROJECT_DIR$/module-channel/module-channel.iml" filepath="$PROJECT_DIR$/module-channel/module-channel.iml" />
-      <module fileurl="file://$PROJECT_DIR$/module-container/module-container.iml" filepath="$PROJECT_DIR$/module-container/module-container.iml" />
-      <module fileurl="file://$PROJECT_DIR$/module-container/module-container.iml" filepath="$PROJECT_DIR$/module-container/module-container.iml" />
-      <module fileurl="file://$PROJECT_DIR$/module-store/module-store.iml" filepath="$PROJECT_DIR$/module-store/module-store.iml" />
-      <module fileurl="file://$PROJECT_DIR$/module-store/module-store.iml" filepath="$PROJECT_DIR$/module-store/module-store.iml" />
-      <module fileurl="file://$PROJECT_DIR$/module-telephony/module-telephony.iml" filepath="$PROJECT_DIR$/module-telephony/module-telephony.iml" />
-      <module fileurl="file://$PROJECT_DIR$/module-telephony/module-telephony.iml" filepath="$PROJECT_DIR$/module-telephony/module-telephony.iml" />
+      <module fileurl="file://$PROJECT_DIR$/module/container/container.iml" filepath="$PROJECT_DIR$/module/container/container.iml" />
+      <module fileurl="file://$PROJECT_DIR$/module/module.iml" filepath="$PROJECT_DIR$/module/module.iml" />
+      <module fileurl="file://$PROJECT_DIR$/module/store/store.iml" filepath="$PROJECT_DIR$/module/store/store.iml" />
+      <module fileurl="file://$PROJECT_DIR$/module/telephony/telephony.iml" filepath="$PROJECT_DIR$/module/telephony/telephony.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/test/test.iml" filepath="$PROJECT_DIR$/app/test/test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/wifi/wifi.iml" filepath="$PROJECT_DIR$/app/wifi/wifi.iml" />
     </modules>
   </component>
 </project>

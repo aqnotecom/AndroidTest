@@ -8,15 +8,17 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/app-barcode" />
-            <option value="$PROJECT_DIR$/app-camera" />
-            <option value="$PROJECT_DIR$/app-test" />
-            <option value="$PROJECT_DIR$/app-wifi" />
-            <option value="$PROJECT_DIR$/module-account" />
-            <option value="$PROJECT_DIR$/module-channel" />
-            <option value="$PROJECT_DIR$/module-container" />
-            <option value="$PROJECT_DIR$/module-store" />
-            <option value="$PROJECT_DIR$/module-telephony" />
+            <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/app/barcode" />
+            <option value="$PROJECT_DIR$/app/camera" />
+            <option value="$PROJECT_DIR$/app/test" />
+            <option value="$PROJECT_DIR$/app/wifi" />
+            <option value="$PROJECT_DIR$/module" />
+            <option value="$PROJECT_DIR$/module/account" />
+            <option value="$PROJECT_DIR$/module/channel" />
+            <option value="$PROJECT_DIR$/module/container" />
+            <option value="$PROJECT_DIR$/module/store" />
+            <option value="$PROJECT_DIR$/module/telephony" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

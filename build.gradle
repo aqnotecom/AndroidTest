@@ -3,6 +3,7 @@
 buildscript {
     repositories {
         jcenter() // maven(url "http://jcenter.bintray.com")
+        google()
     }
 
     dependencies {
@@ -19,6 +20,7 @@ allprojects {
         mavenLocal()
         maven { url "https://maven.google.com" }
         maven { url "http:/aqnote.local:8081" }
+        google()
     }
 }
 

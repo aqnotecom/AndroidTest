@@ -1,27 +1,17 @@
 package com.aqnote.app.test.activity;
 
 import android.graphics.Bitmap;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.support.annotation.MainThread;
+
+import androidx.annotation.MainThread;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.aqnote.module.container.Callbackable;
 import com.aqnote.module.container.thread.Executor;
 import com.aqnote.module.container.util.IpAddressUtil;
 import com.aqnote.module.rpc.util.IOUtil;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 

@@ -9,7 +9,7 @@ import android.os.Bundle;
 import android.content.IntentFilter;
 
 /**
- * Created by aqnote on 6/5/17.
+ * Created by "Peng Li"<aqnote@aqnote.com> on 6/5/17.
  *
  * adb shell
  *

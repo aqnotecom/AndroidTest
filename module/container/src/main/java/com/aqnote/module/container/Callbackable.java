@@ -1,7 +1,7 @@
 package com.aqnote.module.container;
 
 /**
- * Created by aqnote on 5/26/17.
+ * Created by "Peng Li"<aqnote@aqnote.com> on 5/26/17.
  */
 
 public interface Callbackable<T> {

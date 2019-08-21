@@ -7,7 +7,7 @@ import android.util.Log;
 import java.util.concurrent.Executors;
 
 /**
- * Created by aqnote on 11/29/17.
+ * Created by "Peng Li"<aqnote@aqnote.com> on 11/29/17.
  */
 
 public class Executor {

@@ -7,7 +7,7 @@ import android.view.Gravity;
 import android.widget.LinearLayout;
 
 /**
- * Created by aqnote on 5/25/17.
+ * Created by "Peng Li"<aqnote@aqnote.com> on 5/25/17.
  *
  * activity基础页面
  *

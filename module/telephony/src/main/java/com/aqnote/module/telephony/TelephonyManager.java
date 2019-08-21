@@ -5,10 +5,10 @@ import android.app.Activity;
 import android.content.Context;
 import android.text.TextUtils;
 
-import com.aqnote.module.util.PermissionUtil;
+import com.aqnote.module.container.util.PermissionUtil;
 
 /**
- * Created by aqnote on 5/25/17.
+ * Created by "Peng Li"<aqnote@aqnote.com> on 5/25/17.
  * <p>
  * Permission:
  * <p>

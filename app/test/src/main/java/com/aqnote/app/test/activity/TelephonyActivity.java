@@ -9,10 +9,10 @@ import android.widget.TextView;
 import com.aqnote.module.container.Callbackable;
 import com.aqnote.module.telephony.SimStateReceiver;
 import com.aqnote.module.telephony.TelephonyManager;
-import com.aqnote.module.util.PermissionUtil;
+import com.aqnote.module.container.util.PermissionUtil;
 
 /**
- * Created by aqnote on 5/25/17.
+ * Created by "Peng Li"<aqnote@aqnote.com> on 5/25/17.
  * <p>
  * 获取电话信息例子
  *

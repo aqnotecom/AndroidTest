@@ -1,13 +1,14 @@
-package com.aqnote.module.util;
+package com.aqnote.module.container.util;
 
 import android.app.Activity;
 import android.content.pm.PackageManager;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
 import android.widget.Toast;
 
+import androidx.core.content.ContextCompat;
+import androidx.core.app.ActivityCompat;
+
 /**
- * Created by aqnote on 5/26/17.
+ * Created by "Peng Li"<aqnote@aqnote.com> on 5/26/17.
  */
 
 public class PermissionUtil {

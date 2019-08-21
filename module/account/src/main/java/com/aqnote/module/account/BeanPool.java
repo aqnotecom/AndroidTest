@@ -1,7 +1,7 @@
 package com.aqnote.module.account;
 
 /**
- * Created by madding on 2/27/17.
+ * Created by "Peng Li"<aqnote@aqnote.com> on 2/27/17.
  */
 
 public class BeanPool {

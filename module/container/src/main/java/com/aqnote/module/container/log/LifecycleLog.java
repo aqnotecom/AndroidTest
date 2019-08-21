@@ -4,9 +4,9 @@ import android.text.TextUtils;
 import android.util.Log;
 
 /**
- * Created by madding on 2/23/17.
+ * Created by "Peng Li"<aqnote@aqnote.com> on 2/23/17.
  *
- * @author "Peng Li"<aqnote.com@gmail.com>
+ * @author "Peng Li"<aqnote@aqnote.com>
  */
 
 public class LifecycleLog {

@@ -13,11 +13,11 @@ import android.widget.LinearLayout;
 import com.aqnote.module.container.util.AssertUtil;
 
 /**
- * Created by madding on 6/30/16.
+ * Created by "Peng Li"<aqnote@aqnote.com> on 6/30/16.
  *
  * 多任务例子
  *
- * @author "Peng Li"<aqnote.com@gmail.com>
+ * @author "Peng Li"<aqnote@aqnote.com>
  */
 public class TaskActivity extends Activity {
 

@@ -8,7 +8,7 @@ import java.util.*;
  *
  * 获取Ip地址、mac地址工具
  *
- * @author "Peng Li"<aqnote.com@gmail.com>
+ * @author "Peng Li"<aqnote@aqnote.com>
  */
 public class IpAddressUtil {
 

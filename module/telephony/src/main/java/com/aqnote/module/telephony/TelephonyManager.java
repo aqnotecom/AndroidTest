@@ -24,7 +24,7 @@ import com.aqnote.module.util.PermissionUtil;
  * <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS"/>
  * <uses-permission android:name="com.android.voicemail.permission.ADD_VOICEMAIL"/>
  *
- * @author "Peng Li"<aqnote.com@gmail.com>
+ * @author "Peng Li"<aqnote@aqnote.com>
  */
 public class TelephonyManager {
 

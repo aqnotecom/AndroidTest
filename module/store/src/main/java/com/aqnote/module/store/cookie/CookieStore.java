@@ -5,7 +5,7 @@ import android.webkit.CookieManager;
 import android.webkit.ValueCallback;
 
 /**
- * Created by madding on 12/20/16.
+ * Created by "Peng Li"<aqnote@aqnote.com> on 12/20/16.
  */
 
 public class CookieStore {
@@ -55,7 +55,7 @@ public class CookieStore {
 
         ValueCallback<Boolean> callback = new ValueCallback<Boolean>() {
             public void onReceiveValue(Boolean value) {
-                System.out.println("[madding] remove cookie result=" + value);
+                System.out.println("[aqnote] remove cookie result=" + value);
             }
         };
 

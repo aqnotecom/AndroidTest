@@ -16,7 +16,7 @@ import com.aqnote.app.test.activity.leakcanary.TestActivity;
  *
  * 模拟内存泄漏页面
  *
- * @author "Peng Li"<aqnote.com@gmail.com>
+ * @author "Peng Li"<aqnote@aqnote.com>
  */
 public class LeakCanaryActivity extends Activity {
 

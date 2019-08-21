@@ -11,7 +11,7 @@ import com.aqnote.module.container.Callbackable;
 /**
  * Created by aqnote on 5/26/17.
  *
- * @author "Peng Li"<aqnote.com@gmail.com>
+ * @author "Peng Li"<aqnote@aqnote.com>
  */
 
 public class SimStateReceiver extends BroadcastReceiver {

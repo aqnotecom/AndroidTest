@@ -1,7 +1,7 @@
 package com.aqnote.module.container.util;
 
 /**
- * Created by madding on 2/28/17.
+ * Created by "Peng Li"<aqnote@aqnote.com> on 2/28/17.
  */
 
 import android.content.Context;

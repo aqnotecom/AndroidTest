@@ -7,9 +7,9 @@ import javax.net.ssl.SSLContext;
 import javax.net.ssl.X509TrustManager;
 
 /**
- * Created by madding on 5/26/16.
+ * Created by "Peng Li"<aqnote@aqnote.com> on 5/26/16.
  *
- * @author "Peng Li"<aqnote.com@gmail.com>
+ * @author "Peng Li"<aqnote@aqnote.com>
  */
 public class AQTrustManager implements X509TrustManager {
 

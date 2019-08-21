@@ -17,7 +17,7 @@ import java.util.Locale;
 /**
  * 文本转语音例子
  *
- * @author "Peng Li"<aqnote.com@gmail.com>
+ * @author "Peng Li"<aqnote@aqnote.com>
  **/
 public class SpeechActivity extends Activity {
 

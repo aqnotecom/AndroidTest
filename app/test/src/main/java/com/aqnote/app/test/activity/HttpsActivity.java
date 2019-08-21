@@ -22,7 +22,7 @@ import java.io.PrintWriter;
  *
  * 模拟请求https接口页面
  *
- * @author "Peng Li"<aqnote.com@gmail.com>
+ * @author "Peng Li"<aqnote@aqnote.com>
  */
 public class HttpsActivity extends Activity {
     private static final String TAG = HttpsActivity.class.getSimpleName();

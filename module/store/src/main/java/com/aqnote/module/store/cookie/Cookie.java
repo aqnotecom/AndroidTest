@@ -5,7 +5,7 @@ import java.util.Locale;
 import java.util.TimeZone;
 
 /**
- * Created by madding on 12/20/16.
+ * Created by "Peng Li"<aqnote@aqnote.com> on 12/20/16.
  */
 
 public class Cookie {

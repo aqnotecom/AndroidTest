@@ -8,9 +8,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 /**
- * Created by madding on 6/30/16.
+ * Created by "Peng Li"<aqnote@aqnote.com> on 6/30/16.
  *
- * @author "Peng Li"<aqnote.com@gmail.com>
+ * @author "Peng Li"<aqnote@aqnote.com>
  */
 public class DisplayActivity extends Activity {
     private static final String TAG = DisplayActivity.class.getSimpleName();

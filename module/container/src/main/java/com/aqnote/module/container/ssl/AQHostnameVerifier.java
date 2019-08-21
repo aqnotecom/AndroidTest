@@ -5,7 +5,7 @@ import javax.net.ssl.SSLSession;
 
 /**
  *
- * @author "Peng Li"<aqnote.com@gmail.com>
+ * @author "Peng Li"<aqnote@aqnote.com>
  */
 class AQHostnameVerifier implements HostnameVerifier {
 

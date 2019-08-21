@@ -3,15 +3,18 @@ android {
 //    compileSdkVersion 26                        // 编译的SDK版本
 //    buildToolsVersion '25.0.0'                  // 编译的Tools版本
 
-    compileSdkVersion 27                        // 编译的SDK版本
-    buildToolsVersion '27.0.3'                  // 编译的Tools版本
+//    compileSdkVersion 27                        // 编译的SDK版本
+//    buildToolsVersion '27.0.3'                  // 编译的Tools版本
+
+    compileSdkVersion 29                        // 编译的SDK版本
+    buildToolsVersion '29.0.2'                  // 编译的Tools版本
 
     defaultConfig {
-        versionCode 1                           // 版本号
-        versionName "1.0.0"                     // 版本名
+        versionCode 2                           // 版本号
+        versionName "1.1.0"                     // 版本名
 
-        minSdkVersion 19                        // 支持的最低版本
-        targetSdkVersion 25                     // 支持的目标版本
+        minSdkVersion 21                        // 支持的最低版本
+        targetSdkVersion 29                     // 支持的目标版本
 
 //		// Android 2.3 (API level 9) and higher
 //		renderscriptTargetApi 18
@@ -22,11 +25,9 @@ android {
     }
 
     aaptOptions {
-
     }
 
     dexOptions {
-
     }
 
     lintOptions {
@@ -34,29 +35,24 @@ android {
     }
 
     testOptions {
-
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_7
-        targetCompatibility JavaVersion.VERSION_1_7
+//        sourceCompatibility JavaVersion.VERSION_1_7
+//        targetCompatibility JavaVersion.VERSION_1_7
         encoding "UTF-8"
     }
 
     packagingOptions {
-
     }
 
     jacoco {
-
     }
 
     adbOptions {
-
     }
 
     splits {
-
     }
 
     // Data Binding Support
@@ -65,25 +61,23 @@ android {
     }
 
     buildTypes {
-
     }
 
     productFlavors {
-
     }
 
-    signingConfigs {                                     // 签名配置
+    signingConfigs {                                        // 签名配置
         // keytool -genkey -keystore yudao.keystore -keyalg RSA -validity 10950 -alias aqnote
         // keytool -keystore yudao.keystore -list
-        release {                                     // 发布版签名配置
-            storeFile file("keystore/yudao.keystore")    // 密钥文件路径
-            storePassword "hell01234"                 // 密钥文件密码
-            keyAlias "yudao"                             // key别名
-            keyPassword "hell01234"                     // key密码
+        release {                                           // 发布版签名配置
+            storeFile file("keystore/yudao.keystore")       // 密钥文件路径
+            storePassword "hell01234"                       // 密钥文件密码
+            keyAlias "yudao"                                // key别名
+            keyPassword "hell01234"                         // key密码
         }
         // keytool -genkey -v -keystore debug.keystore -alias androiddebugkey -storepass android -keypass android -keyalg RSA -validity 14000
         // CN=Android Debug, OU=Unknown, O=Android, L=Unknown, ST=Unknown, C=US
-        debug {                                         // debug版签名配置
+        debug {                                             // debug版签名配置
             storeFile file("keystore/debug.keystore")
             storePassword "android"
             keyAlias "androiddebugkey"
@@ -103,18 +97,18 @@ android {
             jniLibs.srcDirs = ['libs']                          // 指定lib库目录
         }
 
-        unitTest {
-            java.srcDir file('src/test/java')
-            resources.srcDir file('src/test/res')
-        }
+//        unitTest {
+//            java.srcDir file('src/test/java')
+//            resources.srcDir file('src/test/res')
+//        }
 
-        instrumentTest {
-            manifest.srcFile file('src/androidTest/AndroidManifest.xml')
-            java.srcDirs = ['src/androidTest/java']
-            resources.srcDirs = ['src/androidTest/java']
-            res.srcDirs = ['src/androidTest/res']
-            assets.srcDirs = ['src/androidTest/assets']
-        }
+//        instrumentTest {
+//            manifest.srcFile file('src/androidTest/AndroidManifest.xml')
+//            java.srcDirs = ['src/androidTest/java']
+//            resources.srcDirs = ['src/androidTest/java']
+//            res.srcDirs = ['src/androidTest/res']
+//            assets.srcDirs = ['src/androidTest/assets']
+//        }
 
         debug.setRoot('build-types/debug')          // 指定debug模式的路径
         release.setRoot('build-types/release')      // 指定release模式的路径
@@ -123,11 +117,9 @@ android {
 }
 
 build {
-
 }
 
 help {
-
 }
 
 dependencies {

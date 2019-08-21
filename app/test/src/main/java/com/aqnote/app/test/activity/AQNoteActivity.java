@@ -11,7 +11,7 @@ import android.widget.LinearLayout;
  *
  * activity基础页面
  *
- * @author "Peng Li"<aqnote.com@gmail.com>
+ * @author "Peng Li"<aqnote@aqnote.com>
  */
 public class AQNoteActivity extends Activity {
 

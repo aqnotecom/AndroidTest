@@ -1,4 +1,4 @@
-package android.aqnote.com.store;
+package com.aqnote.android.store;
 
 import org.junit.Test;
 

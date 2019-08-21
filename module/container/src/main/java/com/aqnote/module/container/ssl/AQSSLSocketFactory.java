@@ -8,7 +8,7 @@ import java.net.SocketException;
 import javax.net.ssl.SSLSocketFactory;
 
 /**
- * @author "Peng Li"<aqnote.com@gmail.com>
+ * @author "Peng Li"<aqnote@aqnote.com>
  */
 class AQSSLSocketFactory extends SSLSocketFactory {
 

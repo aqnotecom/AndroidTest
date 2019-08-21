@@ -23,7 +23,7 @@ import com.aqnote.app.test.webview.AQWebViewClient;
 /**
  * webView使用
  *
- * @author "Peng Li"<aqnote.com@gmail.com>
+ * @author "Peng Li"<aqnote@aqnote.com>
  */
 public class WebViewActivity extends Activity {
 

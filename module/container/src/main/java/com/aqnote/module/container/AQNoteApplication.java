@@ -3,7 +3,7 @@ package com.aqnote.module.container;
 import android.app.Application;
 
 /**
- * Created by madding on 2/27/17.
+ * Created by "Peng Li"<aqnote@aqnote.com> on 2/27/17.
  */
 
 public class AQNoteApplication extends Application {

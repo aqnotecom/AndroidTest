@@ -16,7 +16,7 @@ import com.aqnote.module.util.PermissionUtil;
  * <p>
  * 获取电话信息例子
  *
- * @author "Peng Li"<aqnote.com@gmail.com>
+ * @author "Peng Li"<aqnote@aqnote.com>
  */
 public class TelephonyActivity extends AQNoteActivity {
 

@@ -25,7 +25,7 @@ import dalvik.system.DexFile;
  *
  * 入口页面
  *
- * @author "Peng Li"<aqnote.com@gmail.com>
+ * @author "Peng Li"<aqnote@aqnote.com>
  */
 public class MainActivity extends Activity {
 
@@ -90,6 +90,7 @@ public class MainActivity extends Activity {
         adapterNameList.add(HttpsActivity.class.getSimpleName());
         adapterNameList.add(LeakCanaryActivity.class.getSimpleName());
         adapterNameList.add(TelephonyActivity.class.getSimpleName());
+        adapterNameList.add(DeviceActivity.class.getSimpleName());
         adapter = new AQAdapter<String>(this, adapterNameList);
 
         listView.setAdapter(adapter);

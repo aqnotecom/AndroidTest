@@ -27,7 +27,7 @@ import java.net.URL;
 
 /**
  *
- * @author "Peng Li"<aqnote.com@gmail.com>
+ * @author "Peng Li"<aqnote@aqnote.com>
  */
 public class AboutActivity extends AQNoteActivity {
 
@@ -38,36 +38,29 @@ public class AboutActivity extends AQNoteActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        TextView textView = new TextView(AboutActivity.this);
-        StringBuilder sb = new StringBuilder();
-        sb.append("ip address: ").append(IpAddressUtil.getIPAddress(true)).append("\n");
-        sb.append("mac address: ").append(IpAddressUtil.getMACAddress("eth0")).append("\n");
-        textView.setText(sb.toString());
-        alayout.addView(textView, new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.WRAP_CONTENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT));
-
         imageView = new ImageView(AboutActivity.this);
         alayout.addView(imageView, new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.WRAP_CONTENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT));
 
-        Callbackable<Bitmap> job2Callback = new Callbackable<Bitmap>() {
-            @Override
-            public void run(Bitmap data) {
-                Executor.runOnMain(new Job1(data));
-            }
-        };
-        Executor.runOnBackgroud(new Job2(job2Callback));
-
+        addDownloadJob();
     }
 
-    private class Job1 implements Runnable {
+    public void addDownloadJob() {
+        Callbackable<Bitmap> callback = new Callbackable<Bitmap>() {
+            @Override
+            public void run(Bitmap data) {
+                Executor.runOnMain(new JobMainRunnable(data));
+            }
+        };
+        Executor.runOnBackgroud(new JobRunnable(callback));
+    }
+
+    private class JobMainRunnable implements Runnable {
 
         private Bitmap data;
 
-        public Job1(Bitmap data) {
+        public JobMainRunnable(Bitmap data) {
             this.data = data;
         }
 
@@ -78,11 +71,11 @@ public class AboutActivity extends AQNoteActivity {
         }
     }
 
-    private class Job2 implements Runnable {
+    private class JobRunnable implements Runnable {
 
         private Callbackable<Bitmap> callback;
 
-        public Job2(Callbackable<Bitmap> callback) {
+        public JobRunnable(Callbackable<Bitmap> callback) {
             this.callback = callback;
         }
 
@@ -90,7 +83,7 @@ public class AboutActivity extends AQNoteActivity {
         public void run() {
             HttpURLConnection con = null;
             try {
-                String imageURL = "http://oss.aliyuncs.com/aliyun_id_photo_bucket/account-console-aliyun-com/yone_wy_alibaba_inc_com151183563573823401.jpeg";
+                String imageURL = "https://img.alicdn.com/tfs/TB1_uT8a5ERMeJjSspiXXbZLFXa-143-59.png";
                 URL url = new URL(imageURL);
                 con = (HttpURLConnection) url.openConnection();
                 con.setConnectTimeout(5 * 1000);

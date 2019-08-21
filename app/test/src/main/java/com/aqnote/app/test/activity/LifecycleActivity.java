@@ -23,11 +23,11 @@ import static com.aqnote.module.container.log.LifecycleLog.LifecycleState.CALL_T
 import static com.aqnote.module.container.log.LifecycleLog.LifecycleState.RETURN_FROM_SUPER;
 
 /**
- * Created by madding on 2/23/17.
+ * Created by "Peng Li"<aqnote@aqnote.com> on 2/23/17.
  *
  * 测试活动生命周期页面
  *
- * @author "Peng Li"<aqnote.com@gmail.com>
+ * @author "Peng Li"<aqnote@aqnote.com>
  */
 @TargetApi(Build.VERSION_CODES.N)
 public class LifecycleActivity extends Activity {

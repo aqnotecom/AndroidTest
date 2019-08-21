@@ -33,7 +33,7 @@ import static com.aqnote.module.account.Constant.AUTHTOKEN_TYPE_FULL_ACCESS;
 /**
  * 获取系统账号页面
  *
- * @author "Peng Li"<aqnote.com@gmail.com>
+ * @author "Peng Li"<aqnote@aqnote.com>
  */
 public class AccountActivity extends Activity {
 

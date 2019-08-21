@@ -14,9 +14,9 @@ import java.io.FileDescriptor;
 import java.io.IOException;
 
 /**
- * Created by madding.lip on 6/21/16.
+ * Created by "Peng Li"<aqnote@aqnote.com>.lip on 6/21/16.
  *
- * @author "Peng Li"<aqnote.com@gmail.com>
+ * @author "Peng Li"<aqnote@aqnote.com>
  */
 public class AssertUtil {
 

@@ -8,9 +8,9 @@ import com.squareup.leakcanary.RefWatcher;
 
 
 /**
- * Created by madding on 12/20/16.
+ * Created by "Peng Li"<aqnote@aqnote.com> on 12/20/16.
  *
- * @author "Peng Li"<aqnote.com@gmail.com>
+ * @author "Peng Li"<aqnote@aqnote.com>
  */
 public class TestApplication extends AQNoteApplication {
 

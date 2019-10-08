@@ -6,11 +6,10 @@
     <uses-permission android:name="androi.permission.CAMERA"/>
     <!--Sensors: 访问传感器信息，体态和指纹信息-->
     <uses-permission android:name="androi.permission.BODY_SENSORS"/>
-    <uses-permission android:name="android.permission.USE_FINGERPRINT"/>
+<!--    <uses-permission android:name="android.permission.USE_FINGERPRINT"/>-->
     <!--Location: 访问设备定位信息-->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>   <!--GPS  精确定位：访问GPS和网络获取定位-->
     <uses-permission android:name="android.permssion.ACCESS_COARSE_LOCATION"/>  <!--AGPS 模糊定位：访问放落获取定位-->
-    <uses-permission android:name="com.google.android.gms.permission.CAR_SPEED"/> <!--获取汽车速度-->
     <!--Storage: 访问扩展存储信息，如：照片、多媒体、文件-->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.WRITE_EXTENAL_STORAGE"/>
@@ -24,6 +23,7 @@
     <uses-permission android:name="android.permission.RECEIVE_MMS"/>
     <uses-permission android:name="android.permission.RECEIVE_WAP_PUSH"/>
     <!--Car information: 访问汽车信息-->
+    <uses-permission android:name="com.google.android.gms.permission.CAR_SPEED"/>       <!--获取汽车速度-->
     <uses-permission android:name="com.google.android.gms.permission.CAR_INFORMATION"/>
     <uses-permission android:name="com.google.android.gms.permission.CAR_VENDOR_EXTENSION"/>
     <uses-permission android:name="com.google.android.gms.permission.CAR_MILEAGE"/>
@@ -35,13 +35,16 @@
     <!--Calendar: 访问日历-->
     <uses-permission android:name="android.permission.READ_CALENDAR"/>
     <uses-permission android:name="android.permission.WRITE_CALENDAR"/>
-
     <!--nG、WiFi：访问网络设备-->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.ChANGE_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
     <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE"/>
+
+    <!-- Android 10 -->
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_MEDIA_LOCATION" />
 
     <!--<uses-permission android:name="" />-->
     <!--<uses-permission android:name="" />-->
@@ -102,6 +105,8 @@
 
         <activity android:name=".activity.TelephonyActivity"/>
         <activity android:name=".activity.DeviceActivity" />
+        <activity android:name=".activity.ExternalStorageActivity" />
+        <activity android:name=".activity.IdentifiersActivity" />
 
         <receiver
             android:name=".receiver.ReferrerReceiver"

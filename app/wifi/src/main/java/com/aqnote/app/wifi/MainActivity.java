@@ -1,0 +1,226 @@
+/*
+ * WiFi Analyzer
+ * Copyright (C) 2016  VREM Software Development <VREMSoftwareDevelopment@gmail.com>
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>
+ */
+
+package com.aqnote.app.wifi;
+
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Resources;
+import android.os.Bundle;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.util.Pair;
+import androidx.core.view.GravityCompat;
+import android.text.Html;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+
+import com.aqnote.app.wifi.navigation.NavigationMenu;
+import com.aqnote.app.wifi.navigation.NavigationMenuView;
+import com.aqnote.app.wifi.settings.Settings;
+import com.aqnote.app.wifi.wifi.ConnectionView;
+import com.aqnote.app.wifi.wifi.band.WiFiBand;
+import com.aqnote.app.wifi.wifi.band.WiFiChannel;
+import com.aqnote.app.wifi.wifi.scanner.Scanner;
+import com.google.android.material.navigation.NavigationView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
+
+import org.apache.commons.lang3.StringUtils;
+
+public class MainActivity extends AppCompatActivity implements
+        SharedPreferences.OnSharedPreferenceChangeListener,
+        NavigationView.OnNavigationItemSelectedListener {
+    public static final String WI_FI_ANALYZER_BETA = "BETA";
+
+    private NavigationMenuView navigationMenuView;
+    private NavigationMenu startNavigationMenu;
+    private String currentCountryCode;
+    private ConnectionView connectionView;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        MainContext mainContext = MainContext.INSTANCE;
+        mainContext.initialize(this, isLargeScreenLayout(), isDevelopment());
+
+        Settings settings = mainContext.getSettings();
+        settings.initializeDefaultValues();
+        setWiFiChannelPairs();
+
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.main_activity);
+
+        settings.registerOnSharedPreferenceChangeListener(this);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setOnClickListener(new WiFiBandToggle());
+        setSupportActionBar(toolbar);
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+            this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+
+        startNavigationMenu = settings.getStartMenu();
+        navigationMenuView = new NavigationMenuView(this, startNavigationMenu);
+        onNavigationItemSelected(navigationMenuView.getCurrentMenuItem());
+
+        connectionView = new ConnectionView(this);
+        Scanner scanner = mainContext.getScanner();
+        scanner.register(connectionView);
+    }
+
+    private boolean isDevelopment() {
+        return getPackageName().contains(WI_FI_ANALYZER_BETA);
+    }
+
+    private void setWiFiChannelPairs() {
+        Settings settings = MainContext.INSTANCE.getSettings();
+        String countryCode = settings.getCountryCode();
+        if (!countryCode.equals(currentCountryCode)) {
+            Pair<WiFiChannel, WiFiChannel> pair = WiFiBand.GHZ5.getWiFiChannels().getWiFiChannelPairFirst(countryCode);
+            Configuration configuration = MainContext.INSTANCE.getConfiguration();
+            configuration.setWiFiChannelPair(pair);
+            currentCountryCode = countryCode;
+        }
+    }
+
+    private boolean isLargeScreenLayout() {
+        Resources resources = getResources();
+        android.content.res.Configuration configuration = resources.getConfiguration();
+        int screenLayoutSize = configuration.screenLayout & android.content.res.Configuration.SCREENLAYOUT_SIZE_MASK;
+        return screenLayoutSize == android.content.res.Configuration.SCREENLAYOUT_SIZE_LARGE ||
+            screenLayoutSize == android.content.res.Configuration.SCREENLAYOUT_SIZE_XLARGE;
+    }
+
+    @Override
+    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+        if (shouldReload()) {
+            reloadActivity();
+        } else {
+            setWiFiChannelPairs();
+            Scanner scanner = MainContext.INSTANCE.getScanner();
+            scanner.update();
+            updateSubTitle();
+        }
+    }
+
+    boolean shouldReload() {
+        return false;
+    }
+
+    private void reloadActivity() {
+        finish();
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP |
+            Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+    }
+
+    @Override
+    public void onBackPressed() {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            if (startNavigationMenu.equals(navigationMenuView.getCurrentNavigationMenu())) {
+                super.onBackPressed();
+            } else {
+                navigationMenuView.setCurrentNavigationMenu(startNavigationMenu);
+                onNavigationItemSelected(navigationMenuView.getCurrentMenuItem());
+            }
+        }
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(MenuItem menuItem) {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        NavigationMenu.find(menuItem.getItemId()).activateNavigationMenu(this, menuItem);
+        return true;
+    }
+
+    @Override
+    protected void onPause() {
+        Scanner scanner = MainContext.INSTANCE.getScanner();
+        scanner.pause();
+        super.onPause();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Scanner scanner = MainContext.INSTANCE.getScanner();
+        scanner.resume();
+    }
+
+    @Override
+    protected void onDestroy() {
+        Scanner scanner = MainContext.INSTANCE.getScanner();
+        scanner.unregister(connectionView);
+        super.onDestroy();
+    }
+
+    public void updateSubTitle() {
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setSubtitle(makeSubtitle());
+        }
+    }
+
+    private CharSequence makeSubtitle() {
+        NavigationMenu navigationMenu = navigationMenuView.getCurrentNavigationMenu();
+        Settings settings = MainContext.INSTANCE.getSettings();
+        CharSequence subtitle = StringUtils.EMPTY;
+        if (navigationMenu.isWiFiBandSwitchable()) {
+            int color = getResources().getColor(R.color.connected);
+            WiFiBand currentWiFiBand = settings.getWiFiBand();
+            String subtitleText = makeSubtitleText("<font color='" + color + "'><strong>", "</strong></font>", "<small>", "</small>");
+            if (WiFiBand.GHZ5.equals(currentWiFiBand)) {
+                subtitleText = makeSubtitleText("<small>", "</small>", "<font color='" + color + "'><strong>", "</strong></font>");
+            }
+            subtitle = Html.fromHtml(subtitleText);
+        }
+        return subtitle;
+    }
+
+    @NonNull
+    private String makeSubtitleText(@NonNull String tag1, @NonNull String tag2, @NonNull String tag3, @NonNull String tag4) {
+        return tag1 + WiFiBand.GHZ2.getBand() + tag2 + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + tag3 + WiFiBand.GHZ5.getBand() + tag4;
+    }
+
+    public NavigationMenuView getNavigationMenuView() {
+        return navigationMenuView;
+    }
+
+    private class WiFiBandToggle implements OnClickListener {
+        @Override
+        public void onClick(View view) {
+            if (navigationMenuView.getCurrentNavigationMenu().isWiFiBandSwitchable()) {
+                Settings settings = MainContext.INSTANCE.getSettings();
+                settings.toggleWiFiBand();
+            }
+        }
+    }
+}

@@ -1,11 +1,16 @@
 apply plugin: 'com.android.application'
-apply plugin: 'jacoco-android'
 apply from: '../../config/config.gradle'
+
+allprojects {
+    tasks.withType(JavaCompile) {
+//        options.compilerArgs << "-Xlint:unchecked" // -Xlint:deprecation
+    }
+}
 
 android {
 
     defaultConfig {
-        applicationId "com.aqnote.app.wifianalyzer"
+        applicationId "com.aqnote.app.wifi"
     }
 
     buildTypes {                                    // build类型
@@ -14,30 +19,32 @@ android {
             minifyEnabled true                      // 混淆开启
             shrinkResources true                    //移除无用的resource 文件
             zipAlignEnabled true                    //对齐
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'  // 指定混淆规则文件
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro' // 指定混淆规则文件
+
+            multiDexEnabled true
+//            multiDexKeepProguard 'multidex-config.pro'
+//            multiDexKeepFile file 'multidex-config.txt'
 
         }
         debug {                                      // 调试
             signingConfig signingConfigs.debug       // 设置签名信息
             minifyEnabled false                      // 混淆开启
             testCoverageEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'  // 指定混淆规则文件
-        }
-    }
-
-    testOptions {
-        unitTests.all {
-            jacoco {
-                includeNoLocationClasses true
-            }
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro' // 指定混淆规则文件
         }
     }
 }
 
 dependencies {
-    implementation 'com.android.support:appcompat-v7:25.+'
-    implementation 'com.android.support:design:25.+'
-    implementation 'org.apache.commons:commons-lang3:3.5'
+//    implementation 'com.android.support:appcompat-v7:28.0.0'
+//    implementation 'com.android.support:design:28.0.0'
+
+    implementation 'androidx.core:core:1.0.2'
+    implementation 'androidx.annotation:annotation:1.1.0'
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'com.google.android.material:material:1.0.0'
+
+    implementation 'org.apache.commons:commons-lang3:3.9'
     implementation 'com.jjoe64:graphview:4.1.1'
 
     testImplementation 'org.powermock:powermock-module-junit4:1.6.5'
@@ -46,27 +53,3 @@ dependencies {
     testImplementation 'org.robolectric:robolectric:3.1.4'
     testImplementation 'org.robolectric:shadows-support-v4:3.1.4'
 }
-
-//acoco {
-//    toolVersion "0.7.7.201606060606"
-//}
-//
-//jacocoAndroidUnitTestReport {
-//    excludes += ['**/com/jjoe64/*']
-//    html.enabled true
-//    xml.enabled true
-//    csv.enabled false
-//}
-//
-//if (project.hasProperty('keyAlias')) {
-//    def propertiesFile = file('../../keystores/androidkeystore.properties')
-//    def Properties properties = readProperties(propertiesFile);
-//
-//    System.out.println(">>> Signing Config " + properties)
-//    android.buildTypes.release.signingConfig.keyAlias = properties['key_alias'].toString()
-//    android.buildTypes.release.signingConfig.keyPassword = properties['key_password'].toString()
-//    android.buildTypes.release.signingConfig.storeFile = file(properties['store_filename'].toString())
-//    android.buildTypes.release.signingConfig.storePassword = properties['store_password'].toString()
-//}
-//
-

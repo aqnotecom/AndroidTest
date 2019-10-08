@@ -9,7 +9,6 @@
       <module fileurl="file://$PROJECT_DIR$/module/container/container.iml" filepath="$PROJECT_DIR$/module/container/container.iml" />
       <module fileurl="file://$PROJECT_DIR$/module/module.iml" filepath="$PROJECT_DIR$/module/module.iml" />
       <module fileurl="file://$PROJECT_DIR$/module/store/store.iml" filepath="$PROJECT_DIR$/module/store/store.iml" />
-      <module fileurl="file://$PROJECT_DIR$/module/telephony/telephony.iml" filepath="$PROJECT_DIR$/module/telephony/telephony.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/test/test.iml" filepath="$PROJECT_DIR$/app/test/test.iml" />
     </modules>
   </component>

@@ -26,7 +26,7 @@
         android:summary="@string/wifi_band_summary"
         android:title="@string/wifi_band_title"/>
 
-    <com.aqnote.app.wifianalyzer.settings.ScanIntervalPreference
+    <com.aqnote.app.wifi.settings.ScanIntervalPreference
         android:defaultValue="@integer/scan_interval_default"
         android:key="@string/scan_interval_key"
         android:persistent="true"
@@ -78,13 +78,13 @@
         android:summary="@string/theme_summary"
         android:title="@string/theme_title"/>
 
-    <com.aqnote.app.wifianalyzer.settings.StartMenuPreference
+    <com.aqnote.app.wifi.settings.StartMenuPreference
         android:key="@string/start_menu_key"
         android:persistent="true"
         android:summary="@string/start_menu_summary"
         android:title="@string/start_menu_title"/>
 
-    <com.aqnote.app.wifianalyzer.settings.CountryPreference
+    <com.aqnote.app.wifi.settings.CountryPreference
         android:key="@string/country_code_key"
         android:persistent="true"
         android:summary="@string/country_code_summary"

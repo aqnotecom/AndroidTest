@@ -7,5 +7,4 @@ include ':module:container'
 include ':module:channel'
 include ':module:store'
 include ':module:account'
-include ':module:telephony'
 

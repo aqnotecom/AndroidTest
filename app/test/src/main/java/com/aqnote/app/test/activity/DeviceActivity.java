@@ -1,36 +1,24 @@
 package com.aqnote.app.test.activity;
 
-import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.text.TextUtils;
-import android.util.Log;
-import android.view.Gravity;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.aqnote.module.container.Callbackable;
 import com.aqnote.module.container.thread.Executor;
-import com.aqnote.module.container.util.IpAddressUtil;
+import com.aqnote.module.hardware.wifi.WiFiInstance;
 
-public class DeviceActivity extends Activity {
+public class DeviceActivity extends AQNoteActivity {
     private static final String TAG = DeviceActivity.class.getSimpleName();
 
-    protected LinearLayout alayout;
     protected TextView textView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.i(TAG, "onCreate");
-        setTitle(TAG);
-
-        alayout = new LinearLayout(this);
-        alayout.setHorizontalGravity(Gravity.FILL_HORIZONTAL);
-        alayout.setVerticalGravity(Gravity.FILL_VERTICAL);
-        alayout.setOrientation(LinearLayout.VERTICAL);
-        setContentView(alayout);
 
         textView = new TextView(DeviceActivity.this);
         alayout.addView(textView, new LinearLayout.LayoutParams(
@@ -39,7 +27,8 @@ public class DeviceActivity extends Activity {
 
         addAndroidID();
         addIpAddress();
-        addMacAddress();
+        addWifiMacAddress();
+        addBluetoothMacAddress();
     }
 
     public void addAndroidID() {
@@ -55,29 +44,33 @@ public class DeviceActivity extends Activity {
                 });
             }
         };
-        Executor.runOnMain(new GetAndroidID(DeviceActivity.this, callback));
+        Executor.runOnMain(new Action(DeviceActivity.this, callback));
     }
 
     public void addIpAddress() {
-        String ipAddress = IpAddressUtil.getIPAddress(true);
+        String ipAddress = WiFiInstance.getIPAddress(true);
         StringBuilder sb = new StringBuilder(textView.getText());
         sb.append("IP Address: ").append(ipAddress).append("\n");
         textView.setText(sb.toString());
     }
 
-    public void addMacAddress() {
-        String macAddress = IpAddressUtil.getMACAddress("wlan0");
+    public void addWifiMacAddress() {
+        String macAddress = WiFiInstance.getMACAddress("wlan0");
         StringBuilder sb = new StringBuilder(textView.getText());
         sb.append("MAC Address: ").append(macAddress).append("\n");
         textView.setText(sb.toString());
     }
 
-    private class GetAndroidID implements Runnable {
+    public void addBluetoothMacAddress() {
+
+    }
+
+    private class Action implements Runnable {
 
         private Context context;
         private Callbackable<String> callback;
 
-        public GetAndroidID(Context context, Callbackable<String> callback) {
+        public Action(Context context, Callbackable<String> callback) {
             this.context = context;
             this.callback = callback;
         }
@@ -92,5 +85,5 @@ public class DeviceActivity extends Activity {
             }
         }
     }
-
 }
+

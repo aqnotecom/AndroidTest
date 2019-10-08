@@ -91,6 +91,8 @@ public class MainActivity extends Activity {
         adapterNameList.add(LeakCanaryActivity.class.getSimpleName());
         adapterNameList.add(TelephonyActivity.class.getSimpleName());
         adapterNameList.add(DeviceActivity.class.getSimpleName());
+        adapterNameList.add(ExternalStorageActivity.class.getSimpleName());
+        adapterNameList.add(IdentifiersActivity.class.getSimpleName());
         adapter = new AQAdapter<String>(this, adapterNameList);
 
         listView.setAdapter(adapter);

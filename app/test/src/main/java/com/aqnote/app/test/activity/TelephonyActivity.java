@@ -7,8 +7,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.aqnote.module.container.Callbackable;
-import com.aqnote.module.telephony.SimStateReceiver;
-import com.aqnote.module.telephony.TelephonyManager;
+import com.aqnote.module.hardware.cellular.SimStateReceiver;
+import com.aqnote.module.hardware.cellular.CellularInstance;
 import com.aqnote.module.container.util.PermissionUtil;
 
 /**
@@ -35,7 +35,8 @@ public class TelephonyActivity extends AQNoteActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        boolean hasPermission = PermissionUtil.checkPermission(this, Manifest.permission.READ_PHONE_STATE, TelephonyManager.PERMISSION_READ_PHONE_STATE);
+        // java.lang.SecurityException: getDeviceId: The user 10181 does not meet the requirements to access device identifiers.
+        boolean hasPermission = PermissionUtil.checkPermission(this, Manifest.permission.READ_PHONE_STATE, CellularInstance.PERMISSION_READ_PHONE_STATE);
         if (!hasPermission) {
             this.finish();
             return;
@@ -45,11 +46,9 @@ public class TelephonyActivity extends AQNoteActivity {
         alayout.addView(mTextView, new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.MATCH_PARENT));
-        mTextView.setText(getTelephonyData());
 
         addBroadcastReceiver();
     }
-
 
     @Override
     public void onDestroy() {
@@ -59,7 +58,7 @@ public class TelephonyActivity extends AQNoteActivity {
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
-        PermissionUtil.onRequestPermissionsResult(requestCode, grantResults, TelephonyManager.PERMISSION_READ_PHONE_STATE, this);
+        PermissionUtil.onRequestPermissionsResult(requestCode, grantResults, CellularInstance.PERMISSION_READ_PHONE_STATE, this);
     }
 
     private void addBroadcastReceiver() {
@@ -69,34 +68,13 @@ public class TelephonyActivity extends AQNoteActivity {
         mSimStateCallbackable = new Callbackable() {
             @Override
             public void run(Object obj) {
-                mTextView.setText(getTelephonyData());
+                String info = CellularInstance.getInstance(TelephonyActivity.this).getCellularInfo();
+                mTextView.setText(info);
             }
         };
         mSimStateReceiver = new SimStateReceiver(mSimStateCallbackable);
         this.registerReceiver(mSimStateReceiver, mIntentFilter);
     }
 
-    private TelephonyManager telephony() {
-        return TelephonyManager.getInstance(this);
-    }
 
-    private String getTelephonyData() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(String.format("%1$-20s %2$25s\n", "phoneNumber:", telephony().getPhoneNumber()));
-
-        sb.append(String.format("%1$-20s %2$25s\n", "imei:", telephony().getIMEI()));
-
-        sb.append(String.format("%1$-20s %2$25s\n", "imsi:", telephony().getIMSI()));
-
-
-        sb.append(String.format("%1$-20s %2$25s\n", "simCountryIso:", telephony().getSimCountryIso()));
-        sb.append(String.format("%1$-20s %2$25s\n", "simOperator:", telephony().getSimOperator()));
-        sb.append(String.format("%1$-20s %2$25s\n", "simOperatorName:", telephony().getSimOperatorName()));
-        sb.append(String.format("%1$-20s %2$25s\n", "simOperatorName2:", telephony().getSimOperatorName2()));
-        sb.append(String.format("%1$-20s %2$25s\n", "simSerialNumber:", telephony().getSimSerialNumber()));
-        sb.append(String.format("%1$-20s %2$25d\n", "simState:", telephony().getSimState()));
-        sb.append(String.format("%1$-20s %2$25s\n", "simStateName:", telephony().getSimStateName()));
-
-        return sb.toString();
-    }
 }

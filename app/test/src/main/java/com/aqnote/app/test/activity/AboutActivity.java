@@ -3,13 +3,11 @@ package com.aqnote.app.test.activity;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 
-import androidx.annotation.MainThread;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.aqnote.module.container.Callbackable;
 import com.aqnote.module.container.thread.Executor;
-import com.aqnote.module.container.util.IpAddressUtil;
 import com.aqnote.module.rpc.util.IOUtil;
 
 import java.net.HttpURLConnection;

@@ -1,9 +1,7 @@
 package com.aqnote.app.test.activity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,17 +16,13 @@ import com.aqnote.app.test.activity.leakcanary.TestActivity;
  *
  * @author "Peng Li"<aqnote@aqnote.com>
  */
-public class LeakCanaryActivity extends Activity {
+public class LeakCanaryActivity extends AQNoteActivity {
+
+    private static final String TAG = LeakCanaryActivity.class.getSimpleName();
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        LinearLayout layout = new LinearLayout(LeakCanaryActivity.this);
-        layout.setHorizontalGravity(Gravity.FILL_HORIZONTAL);
-        layout.setVerticalGravity(Gravity.FILL_VERTICAL);
-        layout.setOrientation(LinearLayout.VERTICAL);
-        setContentView(layout);
 
         Button btn1 = new Button(LeakCanaryActivity.this);
         btn1.setText("go to test");
@@ -38,7 +32,7 @@ public class LeakCanaryActivity extends Activity {
                 goToTest();
             }
         });
-        layout.addView(btn1, new LinearLayout.LayoutParams(
+        alayout.addView(btn1, new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.WRAP_CONTENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT));
     }

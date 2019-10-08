@@ -145,7 +145,9 @@ public class AccountActivity extends Activity {
             }
 
             // Account picker
-            mAlertDialog = new AlertDialog.Builder(this).setTitle("Pick Account").setAdapter(new ArrayAdapter<String>(getBaseContext(), android.R.layout.simple_list_item_1, name), new DialogInterface.OnClickListener() {
+            mAlertDialog = new AlertDialog.Builder(this)
+                    .setTitle("Pick Account")
+                    .setAdapter(new ArrayAdapter<String>(getBaseContext(), android.R.layout.simple_list_item_1, name), new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     if (invalidate)
